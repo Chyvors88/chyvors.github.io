@@ -36,5 +36,5 @@ Saved assets: `docs/assets/creative-studio.jpg`, `personal-event-poster.jpg`, `c
 
 Each occasion service card includes its own AI-generated concept photograph. The 12 final optimised images and exact generation prompts are in `docs/assets/mockups/`; see `PROMPTS.md`. These illustrate possible designs rather than completed customer projects.
 
-### Ocean-blue brand styling
-The approved spaced ocean-blue logo is used in the header and footer on all five pages. `docs/brand.css` adds blue glass gradients, pastel accents and responsive logo sizing without changing page wording or interactions. The original refined logo and its edit prompt are retained in `output/logo/`.
+### Main brand logo
+The approved spaced ocean-blue logo is used in the header and footer on all five pages. `docs/brand.css` only handles responsive logo sizing. The original site colours and styling are preserved. The refined logo and its edit prompt are retained in `output/logo/`.
