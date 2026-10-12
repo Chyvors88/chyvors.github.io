@@ -38,3 +38,6 @@ Each occasion service card includes its own AI-generated concept photograph. The
 
 ### Main brand logo
 The approved spaced ocean-blue logo is used in the header and footer on all five pages. `docs/brand.css` only handles responsive logo sizing. The original site colours and styling are preserved. The refined logo and its edit prompt are retained in `output/logo/`.
+
+### Enquiry services and FAQ
+The enquiry navigation label is Enquire Now. Existing FAQ questions now live on `docs/faq.html`, linked from every page. The form uses singular Personal Event / Corporate Event labels and grouped service checkboxes populated from the same categories as the occasion page. Changing event type replaces the choices and clears selections; selected service details are included in the downloaded project brief. The form still saves locally rather than submitting an enquiry.
