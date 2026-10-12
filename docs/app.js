@@ -205,13 +205,32 @@ if(serviceSelect) {
       }));
       group.append(heading, options); return group;
     }));
+    const otherGroup = document.createElement('details'); otherGroup.className = 'service-enquiry-group';
+    const otherHeading = document.createElement('summary'); otherHeading.textContent = 'Others';
+    const otherOptions = document.createElement('div'); otherOptions.className = 'service-enquiry-options';
+    const otherChoice = document.createElement('label');
+    const otherCheckbox = document.createElement('input'); otherCheckbox.type = 'checkbox';
+    otherCheckbox.name = 'services'; otherCheckbox.value = 'Others';
+    otherChoice.append(otherCheckbox, document.createTextNode('Others'));
+    const otherDetails = document.createElement('label'); otherDetails.className = 'other-service-details';
+    otherDetails.hidden = true;
+    const otherText = document.createElement('textarea'); otherText.name = 'otherServices';
+    otherText.rows = 3; otherText.placeholder = 'Describe the service you have in mind'; otherText.disabled = true;
+    otherDetails.append(document.createTextNode('Please specify'), otherText);
+    otherCheckbox.addEventListener('change', () => {
+      otherDetails.hidden = !otherCheckbox.checked;
+      otherText.disabled = !otherCheckbox.checked;
+      otherText.required = otherCheckbox.checked;
+    });
+    otherOptions.append(otherChoice, otherDetails); otherGroup.append(otherHeading, otherOptions);
+    container.append(otherGroup);
     document.querySelector('#service-enquiry-help').textContent =
       'Explore ' + (key === 'corporate' ? 'corporate' : 'personal') + ' services below and select all that apply.';
   }
   serviceSelect.addEventListener('change', updateServiceEnquiry);
   updateServiceEnquiry();
 }
-document.querySelector('#brief-form')?.addEventListener('submit',event=>{event.preventDefault();const data=new FormData(event.target);const text=['BACKDROPPED — PROJECT BRIEF','','Name: '+data.get('name'),'Email: '+data.get('email'),'Service: '+data.get('service'),'Selected services: '+(data.getAll('services').join('; ')||'To be discussed'),'Required date: '+(data.get('date')||'To be confirmed'),'','Project details:',data.get('details'),'','Prepared for discussion with backdropped.'].join('\n');const url=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'}));const link=document.createElement('a');link.href=url;link.download='backdropped-project-brief.txt';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);document.querySelector('#brief-status').textContent='Your brief is ready to save. Keep it handy to share with backdropped.';});
+document.querySelector('#brief-form')?.addEventListener('submit',event=>{event.preventDefault();const data=new FormData(event.target);const text=['BACKDROPPED — PROJECT BRIEF','','Name: '+data.get('name'),'Email: '+data.get('email'),'Service: '+data.get('service'),'Selected services: '+(data.getAll('services').join('; ')||'To be discussed'),...(data.get('otherServices')?['Other service details: '+data.get('otherServices')]:[]),'Required date: '+(data.get('date')||'To be confirmed'),'','Project details:',data.get('details'),'','Prepared for discussion with backdropped.'].join('\n');const url=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'}));const link=document.createElement('a');link.href=url;link.download='backdropped-project-brief.txt';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);document.querySelector('#brief-status').textContent='Your brief is ready to save. Keep it handy to share with backdropped.';});
 const menu=document.querySelector('.menu-toggle');const navigation=document.querySelector('#navigation');menu.addEventListener('click',()=>{const expanded=menu.getAttribute('aria-expanded')==='true';menu.setAttribute('aria-expanded',String(!expanded));navigation.classList.toggle('open',!expanded);});navigation.querySelectorAll('a').forEach(item=>item.addEventListener('click',()=>{menu.setAttribute('aria-expanded','false');navigation.classList.remove('open');}));document.addEventListener('keydown',event=>{if(event.key==='Escape'&&navigation.classList.contains('open')&&document.querySelector('.occasion-nav-toggle').getAttribute('aria-expanded')!=='true'){navigation.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.focus();}});
 document.querySelector('#year').textContent = new Date().getFullYear();
 const processVideo = document.querySelector('#process-video');
