@@ -41,3 +41,6 @@ The approved spaced ocean-blue logo is used in the header and footer on all five
 
 ### Enquiry services and FAQ
 The enquiry navigation label is Enquire Now. Existing FAQ questions now live on `docs/faq.html`, linked from every page. The form uses singular Personal Event / Corporate Event labels and grouped service checkboxes populated from the same categories as the occasion page. Changing event type replaces the choices and clears selections; selected service details are included in the downloaded project brief. The form still saves locally rather than submitting an enquiry.
+
+### Smooth background films
+The website now uses `backdrop-process-smooth.mp4`, `personal-event-loop-smooth.mp4` and `corporate-event-loop-smooth.mp4`. All are silent 20-second 1280×720 H.264 loops at 60 fps with fast-start metadata. Fractional-pixel bicubic sampling avoids stepped crop motion; occasion scenes use a gentle horizontal cycle without vertical drift. The homepage preserves its four process scenes with eased movement and soft crossfades, including the loop boundary. Active videos use automatic preloading, while pause controls and reduced-motion behaviour are retained. Original film assets are kept as source material.

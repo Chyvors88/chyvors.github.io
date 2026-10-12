@@ -280,7 +280,7 @@ function updateOccasionFilm(key) {
   if (video.dataset.film === kind) return;
   video.dataset.film = kind;
   video.poster = 'assets/' + kind + '-event-poster.jpg';
-  video.src = 'assets/' + kind + '-event-loop.mp4';
+  video.src = 'assets/' + kind + '-event-loop-smooth.mp4';
   video.muted = true;
   const shouldPlay = !matchMedia('(prefers-reduced-motion: reduce)').matches && video.dataset.userPaused !== 'true';
   video.autoplay = shouldPlay;
