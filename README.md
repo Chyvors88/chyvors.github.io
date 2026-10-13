@@ -16,7 +16,9 @@ The root entry point and relative asset paths support this project site at `http
 - What we do: `docs/what-we-do.html`
 - Your Occasion: `docs/your-occasion.html`
 - About Us: `docs/about-us.html`
-- Let’s Talk: `docs/lets-talk.html`
+- Enquire Now: `docs/lets-talk.html`
+- FAQ: `docs/faq.html`
+- Theme inspiration: `docs/themes.html`
 
 Shared styles and navigation work at the project URL. The homepage service strip loops left to right, includes a pause control, and becomes static when reduced motion is requested.
 
@@ -44,3 +46,8 @@ The enquiry navigation label is Enquire Now. Existing FAQ questions now live on 
 
 ### Smooth background films
 The website now uses `backdrop-process-smooth.mp4`, `personal-event-loop-smooth.mp4` and `corporate-event-loop-smooth.mp4`. All are silent 20-second 1280×720 H.264 loops at 60 fps with fast-start metadata. Fractional-pixel bicubic sampling avoids stepped crop motion; occasion scenes use a gentle horizontal cycle without vertical drift. The homepage preserves its four process scenes with eased movement and soft crossfades, including the loop boundary. Active videos use automatic preloading, while pause controls and reduced-motion behaviour are retained. Original film assets are kept as source material.
+
+### Singapore theme collection
+The personal occasion cards now link to 42 realistic illustrative concepts: 8 baby showers, 10 birthdays (ages 7–80), and 6 each for anniversaries, engagements, weddings and table decorations. The revised image direction uses printed 2D backdrops, flat cutouts and practical creative props across varied Singapore settings and cultural inspirations. The original colour palette is preserved.
+
+`docs/assets/themes/` contains the optimised JPEGs and exact prompts in `PROMPTS.md`; `docs/themes-data.json` is the readable catalogue. Built-in image generation produced the final assets. The galleries support category filters, click-to-enlarge, left-to-right preview reels on hover/focus, explicit mobile motion controls and reduced motion. Each individual theme reel shows the full image and two detail crops of that same concept. Enquiry links carry the chosen theme into the brief.

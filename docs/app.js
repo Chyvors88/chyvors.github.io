@@ -171,9 +171,19 @@ function setOccasion(key, focus = false) {
     const image = document.createElement('img'); image.src = category.image; image.alt = category.alt;
     image.loading = 'lazy'; image.decoding = 'async'; image.width = 1200; image.height = 900;
     const caption = document.createElement('figcaption'); caption.textContent = 'Concept preview';
-    preview.append(image, caption);
+    const collection = window.backdroppedThemes?.find(c => c.name === category.name);
+    if (collection && window.backdroppedThemeUI) {
+      const reel = window.backdroppedThemeUI.createReel(collection.themes);
+      preview.append(reel, caption, window.backdroppedThemeUI.createMotionButton(reel));
+    } else preview.append(image, caption);
     const body = document.createElement('div'); body.className = 'occasion-category-body';
-    body.append(heading, description, list); card.append(preview, body); return card;
+    body.append(heading, description, list);
+    if (collection) {
+      const explore = document.createElement('a'); explore.className = 'theme-explore-link';
+      explore.href = 'themes.html?category=' + collection.key;
+      explore.textContent = 'Explore ' + collection.themes.length + ' themes ↗'; body.append(explore);
+    }
+    card.append(preview, body); return card;
   }));
   document.querySelector('#occasion-cta').textContent = data.cta;
   document.querySelector('#occasion-cta').href = 'lets-talk.html?occasion=' + key;
