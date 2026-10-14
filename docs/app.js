@@ -175,14 +175,16 @@ function setOccasion(key, focus = false) {
     const list = document.createElement('ul');
     list.append(...category.items.map(item => {const li = document.createElement('li'); li.textContent = item; return li;}));
     const preview = document.createElement('figure'); preview.className = 'occasion-category-preview';
-    const image = document.createElement('img'); image.src = category.image; image.alt = category.alt;
-    image.loading = 'lazy'; image.decoding = 'async'; image.width = 1200; image.height = 900;
     const caption = document.createElement('figcaption'); caption.textContent = category.name === 'Exhibition Installation' ? 'Real exhibition projects' : key === 'corporate' ? 'Concepts & real projects' : 'Concept preview';
     const collection = window.backdroppedThemes?.find(c => c.name === category.name);
     if (collection && window.backdroppedThemeUI) {
       const reel = window.backdroppedThemeUI.createReel(collection.themes);
       preview.append(reel, caption, window.backdroppedThemeUI.createMotionButton(reel));
-    } else preview.append(image, caption);
+    } else {
+      const image = document.createElement('img');
+      window.setBackdroppedImage(image, category.image); image.alt = category.alt;
+      image.loading = 'lazy'; preview.append(image, caption);
+    }
     const body = document.createElement('div'); body.className = 'occasion-category-body';
     body.append(heading, description, list);
     if (collection) {
@@ -253,9 +255,13 @@ document.querySelector('#year').textContent = new Date().getFullYear();
 const processVideo = document.querySelector('#process-video');
 const videoToggle = document.querySelector('#video-toggle');
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-let userPaused = reducedMotion.matches;
+function mobileVideoFile(stem) {
+  return 'assets/' + stem + (matchMedia('(max-width: 760px)').matches ? '-mobile.mp4' : '-smooth.mp4');
+}
+let userPaused = reducedMotion.matches || navigator.connection?.saveData === true;
 if(processVideo && videoToggle) {
 processVideo.muted = true;
+processVideo.src = mobileVideoFile('backdrop-process');
 function updateVideoControl() {
   videoToggle.hidden = false;
   videoToggle.setAttribute('aria-label', processVideo.paused ? 'Play background video' : 'Pause background video');
@@ -264,7 +270,7 @@ function updateVideoControl() {
   videoToggle.querySelector('.video-control-label').textContent = processVideo.paused ? 'Play video' : 'Pause video';
 }
 function playProcessVideo() {processVideo.play().then(updateVideoControl).catch(updateVideoControl);}
-if (reducedMotion.matches) {processVideo.removeAttribute('autoplay');processVideo.pause();} else {playProcessVideo();}
+if (userPaused) {processVideo.removeAttribute('autoplay');processVideo.pause();updateVideoControl();} else {playProcessVideo();}
 processVideo.addEventListener('loadeddata', updateVideoControl);
 processVideo.addEventListener('play', updateVideoControl);
 processVideo.addEventListener('pause', updateVideoControl);
@@ -315,10 +321,11 @@ function updateOccasionFilm(key) {
   document.querySelector('.occasion-masthead').dataset.film = kind;
   if (video.dataset.film === kind) return;
   video.dataset.film = kind;
-  video.poster = 'assets/' + kind + '-event-poster.jpg';
-  video.src = 'assets/' + kind + '-event-loop-smooth.mp4';
+  video.poster = window.backdroppedMedia['assets/' + kind + '-event-poster.jpg'].large;
+  video.src = mobileVideoFile(kind + '-event-loop');
   video.muted = true;
-  const shouldPlay = !matchMedia('(prefers-reduced-motion: reduce)').matches && video.dataset.userPaused !== 'true';
+  const shouldPlay = !matchMedia('(prefers-reduced-motion: reduce)').matches && navigator.connection?.saveData !== true && video.dataset.userPaused !== 'true';
+  if (navigator.connection?.saveData && !video.dataset.userPaused) video.dataset.userPaused = 'true';
   video.autoplay = shouldPlay;
   video.load();
   if (shouldPlay) video.play().catch(() => {}); else video.pause();

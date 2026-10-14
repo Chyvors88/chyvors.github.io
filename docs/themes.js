@@ -346,12 +346,23 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
     reel.style.setProperty('--theme-count', views.length);
     reel.style.setProperty('--reel-duration', (views.length * 5) + 's');
     const track = document.createElement('div'); track.className = 'theme-reel-track';
+    const nearby = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const img = entry.target;
+        img.loading = 'eager';
+        window.setBackdroppedImage(img, img.dataset.previewSource, '(max-width: 760px) 88vw, 30vw');
+        nearby.unobserve(img);
+      });
+    }, { root: reel, rootMargin: '0px 150px', threshold: 0.01 }) : null;
     for (let copy = 0; copy < 2; copy++) {
       const group = document.createElement('div'); group.className = 'theme-reel-group';
       if (copy) group.setAttribute('aria-hidden', 'true');
       for (const item of views) {
         const tile = document.createElement('div'); tile.className = 'theme-reel-tile ' + (item.view || 'full');
-        const img = document.createElement('img'); img.src = item.image;
+        const img = document.createElement('img');
+        if (nearby) { img.dataset.previewSource = item.image; nearby.observe(img); }
+        else window.setBackdroppedImage(img, item.image, '(max-width: 760px) 88vw, 30vw');
         img.alt = copy ? '' : item.name + ' — ' + item.setting + (item.kind === 'real' ? ' project photograph' : ' concept');
         img.width = 1000; img.height = 750; img.loading = 'lazy'; img.decoding = 'async';
         if (details && item.view !== 'full') tile.setAttribute('aria-hidden', 'true');

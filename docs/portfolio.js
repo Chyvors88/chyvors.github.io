@@ -13,12 +13,8 @@
   const make = (tag, className, text) => { const el = document.createElement(tag); if (className) el.className = className; if (text) el.textContent = text; return el; };
   function image(photo, thumb = false) {
     const img = make('img');
-    img.src = thumb ? photo.enhancedThumb || photo.thumb : photo.enhanced || photo.image;
-    if (thumb && photo.enhanced) {
-      const smallWidth = Math.round(photo.enhancedWidth * Math.min(1, 960 / Math.max(photo.enhancedWidth, photo.enhancedHeight)));
-      img.srcset = photo.enhancedThumb + ' ' + smallWidth + 'w, ' + photo.enhanced + ' ' + photo.enhancedWidth + 'w';
-      img.sizes = '(max-width: 760px) 92vw, (max-width: 1080px) 44vw, 29vw';
-    }
+    if (thumb) window.setBackdroppedImage(img, photo.enhanced || photo.image);
+    else img.src = photo.enhanced || photo.image;
     img.alt = photo.alt; img.width = photo.enhancedWidth || photo.width; img.height = photo.enhancedHeight || photo.height;
     img.loading = 'lazy'; img.decoding = 'async'; return img;
   }
