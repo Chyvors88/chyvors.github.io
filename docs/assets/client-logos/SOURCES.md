@@ -43,3 +43,4 @@ See `brands.json` for original photo indices and display frames. Original image 
 - Heavenly Wang: original logo supplied directly by the user on 14 October 2026, preserved unchanged.
 - Chang Beer: original logo supplied directly by the user on 14 October 2026, preserved unchanged.
 - DITA Lancier removed from the homepage brand grid at the user’s request; its project remains within Capitol Optical.
+- Silhouette removed from the homepage brand grid at the user’s request; its project remains within Capitol Optical.
