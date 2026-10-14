@@ -1,0 +1,326 @@
+[
+  {
+    "name": "CP-Meiji",
+    "project": "meiji-exhibition-installations",
+    "asset": "meiji.svg",
+    "presentation": "official-logo"
+  },
+  {
+    "name": "Winter Time",
+    "project": "winter-time-expo-display",
+    "asset": "winter-time.jpg",
+    "presentation": "official-logo"
+  },
+  {
+    "name": "Harvey Norman",
+    "project": "harvey-norman-retail-graphics",
+    "asset": "harvey-norman.png",
+    "presentation": "user-supplied-logo"
+  },
+  {
+    "name": "Capitol Optical",
+    "project": "capitol-optical-storefront-campaigns",
+    "asset": "capitol.png",
+    "presentation": "official-logo"
+  },
+  {
+    "name": "FairPrice",
+    "project": "fairprice-event-backdrops",
+    "asset": "fairprice.svg",
+    "presentation": "official-logo"
+  },
+  {
+    "name": "Barbie",
+    "project": "barbie-retail-campaign",
+    "asset": "barbie.jpg",
+    "presentation": "official-logo"
+  },
+  {
+    "name": "Play-Doh",
+    "project": "play-doh-custom-fixture",
+    "asset": "play-doh.png",
+    "presentation": "official-logo"
+  },
+  {
+    "name": "Nikon",
+    "project": "nikon-optical-wall-graphics",
+    "asset": "nikon.svg",
+    "presentation": "official-logo"
+  },
+  {
+    "name": "Shamir",
+    "project": "shamir-product-displays",
+    "asset": "shamir.png",
+    "presentation": "official-logo"
+  },
+  {
+    "name": "Brownes Dairy",
+    "project": "meiji-brownes-chiller-graphics",
+    "asset": "brownes.svg",
+    "presentation": "official-logo"
+  },
+  {
+    "name": "Pike Six",
+    "project": "pike-six-signboard",
+    "asset": "pike-six.png",
+    "presentation": "official-logo"
+  },
+  {
+    "name": "Amity Global Institute",
+    "project": "amity-learning-spaces",
+    "asset": "amity.png",
+    "presentation": "user-supplied-logo"
+  },
+  {
+    "name": "Capital Marketing",
+    "project": "capital-marketing-concept-corners",
+    "asset": "capital-marketing.svg",
+    "presentation": "official-logo"
+  },
+  {
+    "name": "Giant",
+    "project": "peppa-pig-concept-corner",
+    "asset": "giant.png",
+    "presentation": "user-supplied-logo"
+  },
+  {
+    "name": "Cision",
+    "project": "cision-reception-signage",
+    "asset": "cision.svg",
+    "presentation": "official-logo"
+  },
+  {
+    "name": "Optical 88",
+    "project": "optical-88-storefront-display",
+    "asset": 200,
+    "presentation": "original-project-lettering",
+    "frame": [
+      160,
+      156,
+      1216,
+      540
+    ]
+  },
+  {
+    "name": "SG HR Services",
+    "project": "sg-hr-services-reception-sign",
+    "asset": "sg-hr.png",
+    "presentation": "official-logo"
+  },
+  {
+    "name": "Tiong Bahru Bakery",
+    "project": "tiong-bahru-bakery-hoarding",
+    "asset": "tiong-bahru-bakery.png",
+    "presentation": "official-logo"
+  },
+  {
+    "name": "Toyogo",
+    "project": "toyogo-wall-campaigns",
+    "asset": "toyogo.jpg",
+    "presentation": "official-logo"
+  },
+  {
+    "name": "Fiesta",
+    "project": "fiesta-exhibition-freezer-wraps",
+    "asset": 88,
+    "presentation": "original-project-lettering",
+    "frame": [
+      444,
+      784,
+      300,
+      128
+    ]
+  },
+  {
+    "name": "Astria Holdings",
+    "project": "astria-holdings-halo-lettering",
+    "asset": 15,
+    "presentation": "original-project-lettering",
+    "frame": [
+      160,
+      456,
+      1280,
+      180
+    ]
+  },
+  {
+    "name": "Optic Point",
+    "project": "optic-point-acrylic-signage",
+    "asset": 202,
+    "presentation": "original-project-lettering",
+    "frame": [
+      168,
+      384,
+      828,
+      256
+    ]
+  },
+  {
+    "name": "301 Beauty Therapy",
+    "project": "301-beauty-therapy-signboards",
+    "asset": 2,
+    "presentation": "original-project-lettering",
+    "frame": [
+      240,
+      432,
+      864,
+      288
+    ]
+  },
+  {
+    "name": "KPOP Kopitiam",
+    "project": "kpop-kopitiam-frontage",
+    "asset": 135,
+    "presentation": "original-project-lettering",
+    "frame": [
+      204,
+      512,
+      864,
+      320
+    ]
+  },
+  {
+    "name": "Jeep Sing Fashion",
+    "project": "jeep-sing-fashion-signboard",
+    "asset": 134,
+    "presentation": "original-project-lettering",
+    "frame": [
+      480,
+      204,
+      544,
+      316
+    ]
+  },
+  {
+    "name": "Level Up Tuition Centre",
+    "project": "level-up-tuition-centre-lightbox",
+    "asset": 139,
+    "presentation": "original-project-lettering",
+    "frame": [
+      272,
+      228,
+      1152,
+      456
+    ]
+  },
+  {
+    "name": "Essilor",
+    "project": "essilor-optical-campaigns",
+    "asset": 76,
+    "presentation": "original-project-lettering",
+    "frame": [
+      432,
+      156,
+      240,
+      180
+    ]
+  },
+  {
+    "name": "Guardian",
+    "project": "guardian-hoarding-graphics",
+    "asset": 96,
+    "presentation": "original-project-lettering",
+    "frame": [
+      880,
+      259,
+      240,
+      86
+    ]
+  },
+  {
+    "name": "Koo Kee",
+    "project": "koo-kee-hoarding-campaign",
+    "asset": 137,
+    "presentation": "original-project-lettering",
+    "frame": [
+      342,
+      548,
+      99,
+      66
+    ]
+  },
+  {
+    "name": "Heavenly Wang",
+    "project": "heavenly-wang-event-wall",
+    "asset": 129,
+    "presentation": "original-project-lettering",
+    "frame": [
+      251,
+      544,
+      236,
+      160
+    ]
+  },
+  {
+    "name": "Chang",
+    "project": "chang-food-chiller-wraps",
+    "asset": 70,
+    "presentation": "original-project-lettering",
+    "frame": [
+      773,
+      378,
+      104,
+      71
+    ]
+  },
+  {
+    "name": "Jaccake",
+    "project": "brand-identity-print-collateral",
+    "asset": 131,
+    "presentation": "original-project-lettering",
+    "frame": [
+      39,
+      213,
+      1365,
+      1362
+    ]
+  },
+  {
+    "name": "Mark One",
+    "project": "brand-identity-print-collateral",
+    "asset": 197,
+    "presentation": "original-project-lettering",
+    "frame": [
+      320,
+      82,
+      944,
+      667
+    ]
+  },
+  {
+    "name": "Drew Works",
+    "project": "brand-identity-print-collateral",
+    "asset": 193,
+    "presentation": "original-project-lettering",
+    "frame": [
+      528,
+      210,
+      496,
+      494
+    ]
+  },
+  {
+    "name": "Silhouette",
+    "project": "capitol-optical-storefront-campaigns",
+    "asset": 65,
+    "presentation": "original-project-lettering",
+    "frame": [
+      348,
+      752,
+      504,
+      112
+    ]
+  },
+  {
+    "name": "DITA Lancier",
+    "project": "capitol-optical-storefront-campaigns",
+    "asset": 67,
+    "presentation": "original-project-lettering",
+    "frame": [
+      360,
+      256,
+      576,
+      96
+    ]
+  }
+]
