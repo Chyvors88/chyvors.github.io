@@ -33,6 +33,7 @@
 @media(prefers-reduced-motion:reduce){.theme-reel-track{animation:none;transform:translateX(-50%);will-change:auto}.theme-motion-toggle{display:none}.theme-card{transform:none!important;transition:none}}
 
 .theme-reel.is-paused .theme-reel-track{animation-play-state:paused!important}
+.theme-reel.is-offscreen .theme-reel-track,.previews-hidden .theme-reel-track{animation-play-state:paused!important}
 /* Promote only the reel being used, keeping large idle galleries lightweight. */
 .theme-reel-track{will-change:auto}
 .theme-reel.is-moving .theme-reel-track{will-change:transform}

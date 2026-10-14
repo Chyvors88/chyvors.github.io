@@ -342,6 +342,15 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   function createReel(themes, details = false) {
     const reel = document.createElement('div'); reel.className = 'theme-reel';
+    if (matchMedia('(max-width: 760px)').matches && !reduced.matches) reel.classList.add('is-moving');
+    // Stop offscreen previews so mobile devices only animate what is visible.
+    if ('IntersectionObserver' in window) {
+      reel.classList.add('is-offscreen');
+      const visibility = new IntersectionObserver(entries => {
+        entries.forEach(entry => entry.target.classList.toggle('is-offscreen', !entry.isIntersecting));
+      }, { threshold: 0.01 });
+      visibility.observe(reel);
+    }
     const views = details ? ['full', 'left', 'right'].map(view => ({ ...themes[0], view })) : themes;
     reel.style.setProperty('--theme-count', views.length);
     reel.style.setProperty('--reel-duration', (views.length * 5) + 's');
@@ -376,7 +385,8 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
   }
   function createMotionButton(reel) {
     const button = document.createElement('button'); button.type = 'button'; button.className = 'theme-motion-toggle';
-    button.textContent = 'Move preview'; button.setAttribute('aria-pressed', 'false');
+    const initiallyMoving = reel.classList.contains('is-moving');
+    button.textContent = initiallyMoving ? 'Pause preview' : 'Move preview'; button.setAttribute('aria-pressed', String(initiallyMoving));
     button.addEventListener('click', () => {
       const moving = reel.classList.toggle('is-moving'); reel.classList.toggle('is-paused', !moving); button.setAttribute('aria-pressed', String(moving));
       button.textContent = moving ? 'Pause preview' : 'Move preview';
@@ -384,6 +394,7 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
     return button;
   }
   window.backdroppedThemeUI = { createReel, createMotionButton };
+  document.addEventListener('visibilitychange', () => document.body.classList.toggle('previews-hidden', document.hidden));
   const themeField = document.querySelector('[name="details"]');
   const requestedTheme = new URLSearchParams(location.search).get('theme');
   const chosenTheme = collections.flatMap(c => c.themes).find(t => t.id === requestedTheme);
