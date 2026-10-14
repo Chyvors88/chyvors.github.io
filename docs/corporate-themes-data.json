@@ -496,5 +496,53 @@
         "occasion": "corporate"
       }
     ]
+  },
+  {
+    "key": "exhibition-installation",
+    "name": "Exhibition Installation",
+    "intro": "From the design plan to a show-ready space. Explore real Meiji and Winter Time exhibition projects.",
+    "occasion": "corporate",
+    "themes": [
+      {
+        "id": "exhibition-project-140",
+        "name": "Meiji exhibition booth",
+        "description": "A coordinated branded counter, graphics and display area, installed for an exhibition.",
+        "setting": "Meiji exhibition · Brand booth",
+        "image": "assets/portfolio/project-140.jpg",
+        "kind": "real",
+        "occasion": "corporate",
+        "project": "meiji-exhibition-installations"
+      },
+      {
+        "id": "exhibition-project-144",
+        "name": "Meiji exhibition display",
+        "description": "Printed booth graphics and product displays across multiple sides of an exhibition space.",
+        "setting": "Meiji exhibition · Multi-side display",
+        "image": "assets/portfolio/project-144.jpg",
+        "kind": "real",
+        "occasion": "corporate",
+        "project": "meiji-exhibition-installations"
+      },
+      {
+        "id": "exhibition-project-258",
+        "name": "Winter Time exhibition",
+        "description": "An exhibition display brings retail branding, fixtures and product presentation into one space.",
+        "setting": "Winter Time exhibition · Retail display",
+        "image": "assets/portfolio/project-258.jpg",
+        "kind": "real",
+        "occasion": "corporate",
+        "project": "winter-time-expo-display"
+      },
+      {
+        "id": "exhibition-project-263",
+        "name": "Winter Time display details",
+        "description": "A closer view of the exhibition graphics and fixtures in the project collection.",
+        "setting": "Winter Time exhibition · Display details",
+        "image": "assets/portfolio/project-263.jpg",
+        "kind": "real",
+        "occasion": "corporate",
+        "project": "winter-time-expo-display"
+      }
+    ]
   }
 ]

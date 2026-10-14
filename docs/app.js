@@ -77,7 +77,7 @@ const content = {
   "corporate": {
     "label": "YOUR BRAND, CENTRE STAGE",
     "title": "Your business.\nBrought to life.",
-    "description": "From event backdrops to everyday brand visibility, explore stickers, signboards, acrylic signages, window displays and banners made for your business.",
+    "description": "From event backdrops to everyday brand visibility, explore stickers, signboards, acrylic signages, window displays, banners and exhibition installation made for your business.",
     "categories": [
       {
         "name": "Stickers",
@@ -145,6 +145,13 @@ const content = {
         ],
         "image": "assets/mockups/banners-display-boards.jpg",
         "alt": "Fabric and vinyl banners with rigid foam and PVC display boards concept"
+      },
+      {
+        "name": "Exhibition Installation",
+        "description": "Bring your exhibition space together, from brand graphics and display fixtures to delivery and on-site installation.",
+        "items": ["Exhibition booth installation", "Exhibition graphics & backdrops", "Display fixtures & product displays", "Transport & on-site setup"],
+        "image": "assets/portfolio/project-140.jpg",
+        "alt": "Meiji exhibition booth with branded counter, display graphics and installed fixtures"
       }
     ],
     "cta": "Plan your corporate project",
@@ -170,7 +177,7 @@ function setOccasion(key, focus = false) {
     const preview = document.createElement('figure'); preview.className = 'occasion-category-preview';
     const image = document.createElement('img'); image.src = category.image; image.alt = category.alt;
     image.loading = 'lazy'; image.decoding = 'async'; image.width = 1200; image.height = 900;
-    const caption = document.createElement('figcaption'); caption.textContent = key === 'corporate' ? 'Concepts & real projects' : 'Concept preview';
+    const caption = document.createElement('figcaption'); caption.textContent = category.name === 'Exhibition Installation' ? 'Real exhibition projects' : key === 'corporate' ? 'Concepts & real projects' : 'Concept preview';
     const collection = window.backdroppedThemes?.find(c => c.name === category.name);
     if (collection && window.backdroppedThemeUI) {
       const reel = window.backdroppedThemeUI.createReel(collection.themes);
@@ -181,7 +188,7 @@ function setOccasion(key, focus = false) {
     if (collection) {
       const explore = document.createElement('a'); explore.className = 'theme-explore-link';
       explore.href = 'themes.html?category=' + collection.key;
-      explore.textContent = 'Explore ' + collection.themes.length + (key === 'corporate' ? ' ideas & projects ↗' : ' themes ↗'); body.append(explore);
+      explore.textContent = 'Explore ' + collection.themes.length + (category.name === 'Exhibition Installation' ? ' project photos ↗' : key === 'corporate' ? ' ideas & projects ↗' : ' themes ↗'); body.append(explore);
     }
     card.append(preview, body); return card;
   }));

@@ -410,7 +410,9 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
     filters.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.category === collection.key)));
     document.querySelector('#themes-heading').textContent = collection.name;
     document.querySelector('#themes-intro').textContent = collection.intro;
-    document.querySelector('#themes-count').textContent = collection.themes.length + (occasion === 'corporate' ? ' ideas & real projects' : ' curated concepts');
+    const realOnly = collection.themes.every(theme => theme.kind === 'real');
+    document.querySelector('#themes-count').textContent = collection.themes.length + (realOnly ? ' project photographs' : occasion === 'corporate' ? ' ideas & real projects' : ' curated concepts');
+    document.querySelector('#theme-disclaimer').textContent = realOnly ? 'Real exhibition project photographs. Open a preview to explore its full portfolio collection.' : occasion === 'corporate' ? 'Explore generated concepts alongside real project photographs. Each preview is labelled, and real examples link to the portfolio.' : 'Illustrative design concepts. Every setup can be personalised to your venue, colours and traditions.';
     gallery.replaceChildren(...collection.themes.map(theme => {
       const card = document.createElement('article'); card.className = 'theme-card';
       const preview = document.createElement('div'); preview.className = 'theme-card-preview';

@@ -129,7 +129,8 @@ window.backdroppedPortfolio = [
       "Exhibition booths",
       "Backdrops",
       "Signboards",
-      "Retail fixtures"
+      "Retail fixtures",
+      "Exhibition installation"
     ],
     "cover": {
       "image": "assets/portfolio/project-140.jpg",
@@ -764,7 +765,8 @@ window.backdroppedPortfolio = [
     "services": [
       "Exhibition booths",
       "Banners & display boards",
-      "Retail fixtures"
+      "Retail fixtures",
+      "Exhibition installation"
     ],
     "cover": {
       "image": "assets/portfolio/project-258.jpg",
