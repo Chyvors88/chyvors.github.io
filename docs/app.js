@@ -86,7 +86,7 @@ const content = {
           "Floor stickers",
           "Wall stickers",
           "Glass stickers",
-          "Fridge stickers"
+          "Fridge stickers", "Hoarding graphics", "Pillar & escalator graphics", "Die-cut stickers"
         ],
         "image": "assets/mockups/stickers.jpg",
         "alt": "Retail floor, wall, glass and fridge sticker graphics concept"
@@ -97,7 +97,7 @@ const content = {
         "items": [
           "Event & stage backdrops",
           "Branded photo backdrops",
-          "Media walls"
+          "Media walls", "Exhibition booth graphics"
         ],
         "image": "assets/mockups/corporate-backdrops.jpg",
         "alt": "Blue and lime corporate stage and media wall backdrop concept"
@@ -110,7 +110,7 @@ const content = {
           "Front lit",
           "Back lit",
           "Aluminium",
-          "Stainless steel"
+          "Stainless steel", "Lightbox signs"
         ],
         "image": "assets/mockups/signboards.jpg",
         "alt": "LED, front-lit, back-lit and metal signboard showroom concept"
@@ -119,7 +119,7 @@ const content = {
         "name": "Acrylic signages",
         "description": "A clean finish for your message and branding.",
         "items": [
-          "Custom acrylic signage"
+          "Custom acrylic signage", "Acrylic product displays", "Acrylic wayfinding"
         ],
         "image": "assets/mockups/acrylic-signages.jpg",
         "alt": "Clear acrylic sign mounted with metal standoffs and blue raised lettering concept"
@@ -128,7 +128,7 @@ const content = {
         "name": "Window displays",
         "description": "Create an eye-catching moment for your storefront.",
         "items": [
-          "Branded window displays"
+          "Branded window displays", "Custom retail fixtures", "Concept corners", "Product display risers"
         ],
         "image": "assets/mockups/window-displays.jpg",
         "alt": "Retail window graphics and sculptural display installation concept"
@@ -141,7 +141,7 @@ const content = {
           "Fabric",
           "Vinyl",
           "PVC",
-          "Kapaline"
+          "Kapaline", "Hanging wayfinding banners", "Life-size standees", "Print collateral & name cards", "Brand artwork & logo design"
         ],
         "image": "assets/mockups/banners-display-boards.jpg",
         "alt": "Fabric and vinyl banners with rigid foam and PVC display boards concept"
@@ -170,7 +170,7 @@ function setOccasion(key, focus = false) {
     const preview = document.createElement('figure'); preview.className = 'occasion-category-preview';
     const image = document.createElement('img'); image.src = category.image; image.alt = category.alt;
     image.loading = 'lazy'; image.decoding = 'async'; image.width = 1200; image.height = 900;
-    const caption = document.createElement('figcaption'); caption.textContent = 'Concept preview';
+    const caption = document.createElement('figcaption'); caption.textContent = key === 'corporate' ? 'Concepts & real projects' : 'Concept preview';
     const collection = window.backdroppedThemes?.find(c => c.name === category.name);
     if (collection && window.backdroppedThemeUI) {
       const reel = window.backdroppedThemeUI.createReel(collection.themes);
@@ -181,7 +181,7 @@ function setOccasion(key, focus = false) {
     if (collection) {
       const explore = document.createElement('a'); explore.className = 'theme-explore-link';
       explore.href = 'themes.html?category=' + collection.key;
-      explore.textContent = 'Explore ' + collection.themes.length + ' themes ↗'; body.append(explore);
+      explore.textContent = 'Explore ' + collection.themes.length + (key === 'corporate' ? ' ideas & projects ↗' : ' themes ↗'); body.append(explore);
     }
     card.append(preview, body); return card;
   }));
@@ -347,3 +347,7 @@ if (occasionFilm && occasionFilmToggle) {
   occasionFilm.addEventListener('error', () => {occasionFilmToggle.hidden = true;});
   updateOccasionFilmControl();
 }
+
+const portfolioProject = new URLSearchParams(location.search).get("project");
+const portfolioBrief = document.querySelector("[name=details]");
+if (portfolioProject && portfolioBrief && !portfolioBrief.value) portfolioBrief.value = "Portfolio inspiration: " + portfolioProject.replaceAll("-", " ") + "\n";

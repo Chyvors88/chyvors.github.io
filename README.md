@@ -51,3 +51,12 @@ The website now uses `backdrop-process-smooth.mp4`, `personal-event-loop-smooth.
 The personal occasion cards now link to 42 realistic illustrative concepts: 8 baby showers, 10 birthdays (ages 7–80), and 6 each for anniversaries, engagements, weddings and table decorations. The revised image direction uses printed 2D backdrops, flat cutouts and practical creative props across varied Singapore settings and cultural inspirations. The original colour palette is preserved.
 
 `docs/assets/themes/` contains the optimised JPEGs and exact prompts in `PROMPTS.md`; `docs/themes-data.json` is the readable catalogue. Built-in image generation produced the final assets. The galleries support category filters, click-to-enlarge, left-to-right preview reels on hover/focus, explicit mobile motion controls and reduced motion. Each individual theme reel shows the full image and two detail crops of that same concept. Enquiry links carry the chosen theme into the brief.
+
+### Corporate inspiration and project portfolio
+Corporate inspiration now uses the same carousel, mobile movement controls, enlarged views and enquiry links as Personal Events. Each of the six categories has five generated concepts plus three authentic examples from the supplied Drive folder. Concept previews and real project photographs are labelled separately. The mixed galleries link to full portfolio collections.
+
+The portfolio reviews all 264 supplied photos, removes 11 exact duplicates, and groups 253 unique project images into 38 collections. It includes service filters, search, individual project galleries, photo navigation, original/enhanced comparison and enquiry links. Source attribution is recorded in `docs/assets/portfolio/SOURCE.md`; corporate prompts are in `docs/assets/corporate-themes/PROMPTS.md`. Installation photos are preserved as originals. Additional service choices derive from photographed exhibition booths, custom retail fixtures, hoarding graphics, wayfinding, standees and print collateral.
+
+Portfolio photo cleanup is documented in `docs/assets/portfolio-enhanced/PROMPTS.md`. The portfolio uses native-resolution AI-retouched previews with original-image comparison; smaller responsive derivatives keep browsing light. Corporate galleries continue to identify generated concepts and authentic photographs separately.
+
+Photo-editing status: 182 of 253 unique images have retouched previews. The remaining 71 retain originals and are listed in `docs/assets/portfolio-enhanced/PENDING.json` for continuation after the image-editing service limit resets.

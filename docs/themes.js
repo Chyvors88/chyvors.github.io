@@ -336,6 +336,7 @@ window.backdroppedThemes = [
     ]
   }
 ];
+window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
 (function () {
   const collections = window.backdroppedThemes;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
@@ -351,7 +352,7 @@ window.backdroppedThemes = [
       for (const item of views) {
         const tile = document.createElement('div'); tile.className = 'theme-reel-tile ' + (item.view || 'full');
         const img = document.createElement('img'); img.src = item.image;
-        img.alt = copy ? '' : item.name + ' — ' + item.setting + ' concept';
+        img.alt = copy ? '' : item.name + ' — ' + item.setting + (item.kind === 'real' ? ' project photograph' : ' concept');
         img.width = 1000; img.height = 750; img.loading = 'lazy'; img.decoding = 'async';
         if (details && item.view !== 'full') tile.setAttribute('aria-hidden', 'true');
         tile.append(img);
@@ -379,41 +380,51 @@ window.backdroppedThemes = [
   const gallery = document.querySelector('#theme-gallery');
   if (!gallery) return;
   const filters = document.querySelector('#theme-filters');
+  const query = new URLSearchParams(location.search);
+  const requestedCollection = collections.find(c => c.key === query.get('category'));
+  const occasion = requestedCollection?.occasion || (query.get('occasion') === 'corporate' ? 'corporate' : 'personal');
+  const available = collections.filter(c => (c.occasion || 'personal') === occasion);
+  document.querySelector('#theme-occasion-personal').setAttribute('aria-current', occasion === 'personal' ? 'page' : 'false');
+  document.querySelector('#theme-occasion-corporate').setAttribute('aria-current', occasion === 'corporate' ? 'page' : 'false');
+  document.querySelector('#theme-disclaimer').textContent = occasion === 'corporate' ? 'Explore generated concepts alongside real project photographs. Each preview is labelled, and real examples link to the portfolio.' : 'Illustrative design concepts. Every setup can be personalised to your venue, colours and traditions.';
   const dialog = document.querySelector('#theme-dialog');
   let lastOpener;
   function openTheme(theme, button) {
     lastOpener = button;
     document.querySelector('#theme-dialog-image').src = theme.image;
-    document.querySelector('#theme-dialog-image').alt = theme.name + ' concept in ' + theme.setting;
+    document.querySelector('#theme-dialog-image').alt = theme.name + (theme.kind === 'real' ? ' project photograph in ' : ' concept in ') + theme.setting;
     document.querySelector('#theme-dialog-title').textContent = theme.name;
     document.querySelector('#theme-dialog-description').textContent = theme.description;
     document.querySelector('#theme-dialog-setting').textContent = theme.setting;
-    document.querySelector('#theme-dialog-enquire').href = 'lets-talk.html?occasion=personal&theme=' + encodeURIComponent(theme.id);
+    document.querySelector('#theme-dialog-enquire').href = 'lets-talk.html?occasion=' + (theme.occasion || 'personal') + '&theme=' + encodeURIComponent(theme.id);
+    document.querySelector('#theme-dialog-enquire').textContent = theme.kind === 'real' ? 'Enquire about similar work' : 'Enquire about this theme';
+    const portfolioLink = document.querySelector('#theme-dialog-portfolio'); portfolioLink.hidden = !theme.project; if (theme.project) portfolioLink.href = 'portfolio.html?project=' + theme.project;
+    document.querySelector('#theme-dialog-kind').textContent = theme.kind === 'real' ? 'Project photograph' : 'Concept preview';
     dialog.showModal();
   }
   document.querySelector('#theme-dialog-close').addEventListener('click', () => dialog.close());
   dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
   dialog.addEventListener('close', () => lastOpener?.focus());
   function showCollection(key) {
-    const collection = collections.find(c => c.key === key) || collections[0];
+    const collection = available.find(c => c.key === key) || available[0];
     filters.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.category === collection.key)));
     document.querySelector('#themes-heading').textContent = collection.name;
     document.querySelector('#themes-intro').textContent = collection.intro;
-    document.querySelector('#themes-count').textContent = collection.themes.length + ' curated concepts';
+    document.querySelector('#themes-count').textContent = collection.themes.length + (occasion === 'corporate' ? ' ideas & real projects' : ' curated concepts');
     gallery.replaceChildren(...collection.themes.map(theme => {
       const card = document.createElement('article'); card.className = 'theme-card';
       const preview = document.createElement('div'); preview.className = 'theme-card-preview';
       const open = document.createElement('button'); open.type = 'button'; open.className = 'theme-open';
-      open.setAttribute('aria-label', 'View ' + theme.name + ' concept');
+      open.setAttribute('aria-label', 'View ' + theme.name + (theme.kind === 'real' ? ' project photograph' : ' concept'));
       const reel = createReel([theme], true); open.append(reel);
       open.addEventListener('click', () => openTheme(theme, open));
-      const label = document.createElement('span'); label.className = 'theme-concept-label'; label.textContent = 'Concept preview';
+      const label = document.createElement('span'); label.className = 'theme-concept-label'; label.textContent = theme.kind === 'real' ? 'Real project' : 'Concept preview';
       preview.append(open, label, createMotionButton(reel));
       const body = document.createElement('div'); body.className = 'theme-card-body';
       const setting = document.createElement('p'); setting.className = 'theme-setting'; setting.textContent = theme.setting;
       const title = document.createElement('h2'); title.textContent = theme.name;
       const description = document.createElement('p'); description.textContent = theme.description;
-      const view = document.createElement('button'); view.type = 'button'; view.className = 'card-link'; view.textContent = 'View concept ↗';
+      const view = document.createElement('button'); view.type = 'button'; view.className = 'card-link'; view.textContent = theme.kind === 'real' ? 'View project photo ↗' : 'View concept ↗';
       view.addEventListener('click', () => openTheme(theme, view));
       body.append(setting, title, description, view); card.append(preview, body);
       card.addEventListener('pointermove', event => {
@@ -425,9 +436,9 @@ window.backdroppedThemes = [
       card.addEventListener('pointerleave', () => { card.style.setProperty('--tilt-x', '0deg'); card.style.setProperty('--tilt-y', '0deg'); });
       return card;
     }));
-    history.replaceState(null, '', 'themes.html?category=' + collection.key);
+    history.replaceState(null, '', 'themes.html?occasion=' + occasion + '&category=' + collection.key);
   }
-  for (const collection of collections) {
+  for (const collection of available) {
     const button = document.createElement('button'); button.type = 'button'; button.textContent = collection.name;
     button.dataset.category = collection.key; button.addEventListener('click', () => showCollection(collection.key)); filters.append(button);
   }
