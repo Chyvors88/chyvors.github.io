@@ -92,14 +92,8 @@
   {
     "name": "Optical 88",
     "project": "optical-88-storefront-display",
-    "asset": 200,
-    "presentation": "original-project-lettering",
-    "frame": [
-      160,
-      156,
-      1216,
-      540
-    ]
+    "asset": "optical-88.png",
+    "presentation": "user-supplied-logo"
   },
   {
     "name": "SG HR Services",
@@ -122,38 +116,20 @@
   {
     "name": "Fiesta",
     "project": "fiesta-exhibition-freezer-wraps",
-    "asset": 88,
-    "presentation": "original-project-lettering",
-    "frame": [
-      444,
-      784,
-      300,
-      128
-    ]
+    "asset": "fiesta.png",
+    "presentation": "user-supplied-logo"
   },
   {
     "name": "Astria Holdings",
     "project": "astria-holdings-halo-lettering",
-    "asset": 15,
-    "presentation": "original-project-lettering",
-    "frame": [
-      160,
-      456,
-      1280,
-      180
-    ]
+    "asset": "astria-holdings.png",
+    "presentation": "user-supplied-logo"
   },
   {
     "name": "Optic Point",
     "project": "optic-point-acrylic-signage",
-    "asset": 202,
-    "presentation": "original-project-lettering",
-    "frame": [
-      168,
-      384,
-      828,
-      256
-    ]
+    "asset": "optic-point.png",
+    "presentation": "user-supplied-logo"
   },
   {
     "name": "301 Beauty Therapy",
@@ -182,86 +158,44 @@
   {
     "name": "Jeep Sing Fashion",
     "project": "jeep-sing-fashion-signboard",
-    "asset": 134,
-    "presentation": "original-project-lettering",
-    "frame": [
-      480,
-      204,
-      544,
-      316
-    ]
+    "asset": "jeep-sing.png",
+    "presentation": "user-supplied-logo"
   },
   {
     "name": "Level Up Tuition Centre",
     "project": "level-up-tuition-centre-lightbox",
-    "asset": 139,
-    "presentation": "original-project-lettering",
-    "frame": [
-      272,
-      228,
-      1152,
-      456
-    ]
+    "asset": "level-up.png",
+    "presentation": "user-supplied-logo"
   },
   {
     "name": "Essilor",
     "project": "essilor-optical-campaigns",
-    "asset": 76,
-    "presentation": "original-project-lettering",
-    "frame": [
-      432,
-      156,
-      240,
-      180
-    ]
+    "asset": "essilor.png",
+    "presentation": "user-supplied-logo"
   },
   {
     "name": "Guardian",
     "project": "guardian-hoarding-graphics",
-    "asset": 96,
-    "presentation": "original-project-lettering",
-    "frame": [
-      880,
-      259,
-      240,
-      86
-    ]
+    "asset": "guardian.png",
+    "presentation": "user-supplied-logo"
   },
   {
     "name": "Koo Kee",
     "project": "koo-kee-hoarding-campaign",
-    "asset": 137,
-    "presentation": "original-project-lettering",
-    "frame": [
-      342,
-      548,
-      99,
-      66
-    ]
+    "asset": "koo-kee.png",
+    "presentation": "user-supplied-logo"
   },
   {
     "name": "Heavenly Wang",
     "project": "heavenly-wang-event-wall",
-    "asset": 129,
-    "presentation": "original-project-lettering",
-    "frame": [
-      251,
-      544,
-      236,
-      160
-    ]
+    "asset": "heavenly-wang.png",
+    "presentation": "user-supplied-logo"
   },
   {
     "name": "Chang",
     "project": "chang-food-chiller-wraps",
-    "asset": 70,
-    "presentation": "original-project-lettering",
-    "frame": [
-      773,
-      378,
-      104,
-      71
-    ]
+    "asset": "chang.png",
+    "presentation": "user-supplied-logo"
   },
   {
     "name": "Jaccake",
@@ -309,18 +243,6 @@
       752,
       504,
       112
-    ]
-  },
-  {
-    "name": "DITA Lancier",
-    "project": "capitol-optical-storefront-campaigns",
-    "asset": 67,
-    "presentation": "original-project-lettering",
-    "frame": [
-      360,
-      256,
-      576,
-      96
     ]
   }
 ]

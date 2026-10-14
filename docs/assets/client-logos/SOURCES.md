@@ -29,3 +29,17 @@ See `brands.json` for original photo indices and display frames. Original image 
 
 - Amity Global Institute: original logo supplied directly by the user on 14 October 2026, preserved unchanged.
 - Giant: original logo supplied directly by the user on 14 October 2026, preserved unchanged. Links to the Peppa Pig concept-corner installation at Giant.
+
+## Additional user-supplied logos
+- Fiesta: original logo supplied directly by the user on 14 October 2026, preserved unchanged.
+- Astria Holdings: original logo supplied directly by the user on 14 October 2026, preserved unchanged.
+- Optical 88: original logo supplied directly by the user on 14 October 2026, preserved unchanged.
+- Optic Point: original logo supplied directly by the user on 14 October 2026, preserved unchanged.
+- Jeep Sing Fashion: original logo supplied directly by the user on 14 October 2026, preserved unchanged.
+- Level Up Tuition Centre: Level Up Education logo supplied directly by the user on 14 October 2026, preserved unchanged.
+- Essilor: original logo supplied directly by the user on 14 October 2026, preserved unchanged.
+- Guardian: original logo supplied directly by the user on 14 October 2026, preserved unchanged.
+- Koo Kee: original logo supplied directly by the user on 14 October 2026, preserved unchanged.
+- Heavenly Wang: original logo supplied directly by the user on 14 October 2026, preserved unchanged.
+- Chang Beer: original logo supplied directly by the user on 14 October 2026, preserved unchanged.
+- DITA Lancier removed from the homepage brand grid at the user’s request; its project remains within Capitol Optical.
