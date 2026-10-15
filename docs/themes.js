@@ -414,7 +414,6 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
       }
       reel.loadNearby();
     }
-    reel.movePreview = direction => position(direction * reel.clientWidth);
     reel.addEventListener('pointerdown', event => {
       if (!event.isPrimary || (event.pointerType === 'mouse' && event.button !== 0)) return;
       reel.classList.add('is-interacting');
@@ -463,12 +462,6 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
       button.textContent = moving ? 'Pause preview' : 'Move preview';
     });
     const controls = document.createElement('div'); controls.className = 'theme-preview-controls';
-    for (const [direction, label, icon] of [[1, 'Previous preview', '‹'], [-1, 'Next preview', '›']]) {
-      const arrow = document.createElement('button'); arrow.type = 'button';
-      arrow.className = 'theme-preview-arrow ' + (direction === 1 ? 'previous' : 'next');
-      arrow.setAttribute('aria-label', label); arrow.textContent = icon;
-      arrow.addEventListener('click', () => reel.movePreview(direction)); controls.append(arrow);
-    }
     controls.append(button); return controls;
   }
   window.backdroppedThemeUI = { createReel, createMotionButton };
