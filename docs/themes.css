@@ -34,6 +34,13 @@
 
 .theme-reel.is-paused .theme-reel-track{animation-play-state:paused!important}
 .theme-reel.is-offscreen .theme-reel-track,.previews-hidden .theme-reel-track{animation-play-state:paused!important}
+.theme-reel{touch-action:pan-y pinch-zoom;cursor:grab;user-select:none;-webkit-user-select:none}
+.theme-reel.is-dragging{cursor:grabbing}
+.theme-reel.is-interacting .theme-reel-track{animation-play-state:paused!important}
+.theme-preview-controls{position:absolute;inset:0;pointer-events:none;z-index:2}
+.theme-preview-controls>button{pointer-events:auto}
+.theme-preview-arrow{position:absolute;top:50%;transform:translateY(-50%);width:32px;height:36px;border:1px solid #fff9;border-radius:50%;background:#ffffffe6;color:var(--ink);font-size:26px;line-height:1;box-shadow:0 2px 8px #0002;display:grid;place-items:center;padding:0}
+.theme-preview-arrow.previous{left:10px}.theme-preview-arrow.next{right:10px}
 /* Promote only the reel being used, keeping large idle galleries lightweight. */
 .theme-reel-track{will-change:auto}
 .theme-reel.is-moving .theme-reel-track{will-change:transform}

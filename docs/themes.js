@@ -342,7 +342,7 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   function createReel(themes, details = false) {
     const reel = document.createElement('div'); reel.className = 'theme-reel';
-    if (matchMedia('(max-width: 760px)').matches && !reduced.matches) reel.classList.add('is-moving');
+    if (!reduced.matches) reel.classList.add('is-moving');
     // Stop offscreen previews so mobile devices only animate what is visible.
     if ('IntersectionObserver' in window) {
       reel.classList.add('is-offscreen');
@@ -373,7 +373,7 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
         if (nearby) { img.dataset.previewSource = item.image; nearby.observe(img); }
         else window.setBackdroppedImage(img, item.image, '(max-width: 760px) 88vw, 30vw');
         img.alt = copy ? '' : item.name + ' — ' + item.setting + (item.kind === 'real' ? ' project photograph' : ' concept');
-        img.width = 1000; img.height = 750; img.loading = 'lazy'; img.decoding = 'async';
+        img.width = 1000; img.height = 750; img.loading = 'lazy'; img.decoding = 'async'; img.draggable = false;
         if (details && item.view !== 'full') tile.setAttribute('aria-hidden', 'true');
         tile.append(img);
         if (!details) { const title = document.createElement('span'); title.className = 'theme-reel-name'; title.textContent = item.name; tile.append(title); }
@@ -381,7 +381,63 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
       }
       track.append(group);
     }
-    reel.append(track); return reel;
+    reel.append(track);
+    let gesture;
+    const wrap = (value, length) => ((value % length) + length) % length;
+    function position(delta, start) {
+      const span = track.getBoundingClientRect().width / 2;
+      if (!span) return;
+      const animation = track.getAnimations()[0];
+      if (animation) {
+        const duration = Number(animation.effect.getTiming().duration);
+        animation.currentTime = wrap((start ?? Number(animation.currentTime || 0)) + delta / span * duration, duration);
+      } else {
+        // Reduced motion keeps automatic movement off, but still allows manual browsing.
+        const current = start ?? Number(reel.dataset.manualPosition || -span);
+        const offset = wrap(current + delta, span) - span;
+        reel.dataset.manualPosition = String(offset);
+        track.style.transform = 'translateX(' + offset + 'px)';
+      }
+    }
+    reel.movePreview = direction => position(direction * reel.clientWidth);
+    reel.addEventListener('pointerdown', event => {
+      if (!event.isPrimary || (event.pointerType === 'mouse' && event.button !== 0)) return;
+      reel.classList.add('is-interacting');
+      const animation = track.getAnimations()[0];
+      gesture = { id: event.pointerId, x: event.clientX, y: event.clientY, dragging: false,
+        start: animation ? Number(animation.currentTime || 0) : Number(reel.dataset.manualPosition || -track.getBoundingClientRect().width / 2) };
+    });
+    function finish() {
+      if (!gesture) return;
+      const { id, dragging } = gesture;
+      gesture = null;
+      if (reel.hasPointerCapture(id)) reel.releasePointerCapture(id);
+      reel.classList.remove('is-interacting', 'is-dragging');
+      if (dragging) {
+        reel.dataset.suppressClick = 'true';
+        setTimeout(() => { delete reel.dataset.suppressClick; }, 0);
+      }
+    }
+    reel.addEventListener('pointermove', event => {
+      if (!gesture || event.pointerId !== gesture.id) return;
+      const dx = event.clientX - gesture.x, dy = event.clientY - gesture.y;
+      if (!gesture.dragging) {
+        if (Math.abs(dy) > 8 && Math.abs(dy) > Math.abs(dx)) { finish(); return; }
+        if (Math.abs(dx) < 8) return;
+        gesture.dragging = true; reel.setPointerCapture(event.pointerId); reel.classList.add('is-dragging');
+      }
+      event.preventDefault(); position(dx, gesture.start);
+    });
+    reel.addEventListener('pointerup', finish);
+    reel.addEventListener('pointerleave', () => { if (gesture && !gesture.dragging) finish(); });
+    reel.addEventListener('pointercancel', finish);
+    reel.addEventListener('lostpointercapture', finish);
+    // A completed swipe must not open the gallery's enlarged-photo button.
+    reel.addEventListener('click', event => {
+      if (reel.dataset.suppressClick) { event.preventDefault(); event.stopPropagation(); }
+    }, true);
+    reel.addEventListener('dragstart', event => event.preventDefault());
+    return reel;
   }
   function createMotionButton(reel) {
     const button = document.createElement('button'); button.type = 'button'; button.className = 'theme-motion-toggle';
@@ -391,7 +447,14 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
       const moving = reel.classList.toggle('is-moving'); reel.classList.toggle('is-paused', !moving); button.setAttribute('aria-pressed', String(moving));
       button.textContent = moving ? 'Pause preview' : 'Move preview';
     });
-    return button;
+    const controls = document.createElement('div'); controls.className = 'theme-preview-controls';
+    for (const [direction, label, icon] of [[1, 'Previous preview', '‹'], [-1, 'Next preview', '›']]) {
+      const arrow = document.createElement('button'); arrow.type = 'button';
+      arrow.className = 'theme-preview-arrow ' + (direction === 1 ? 'previous' : 'next');
+      arrow.setAttribute('aria-label', label); arrow.textContent = icon;
+      arrow.addEventListener('click', () => reel.movePreview(direction)); controls.append(arrow);
+    }
+    controls.append(button); return controls;
   }
   window.backdroppedThemeUI = { createReel, createMotionButton };
   document.addEventListener('visibilitychange', () => document.body.classList.toggle('previews-hidden', document.hidden));
