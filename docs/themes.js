@@ -513,6 +513,11 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
     filters.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.category === collection.key)));
     document.querySelector('#themes-heading').textContent = collection.name;
     document.querySelector('#themes-intro').textContent = collection.intro;
+    const guide = document.querySelector('#signboard-guide');
+    if (guide) {
+      guide.hidden = collection.key !== 'signboards';
+      guide.open = !guide.hidden && location.hash === '#signboard-guide';
+    }
     const realOnly = collection.themes.every(theme => theme.kind === 'real');
     document.querySelector('#themes-count').textContent = collection.themes.length + (realOnly ? ' project photographs' : occasion === 'corporate' ? ' ideas & real projects' : ' curated concepts');
     document.querySelector('#theme-disclaimer').textContent = realOnly ? 'Real exhibition project photographs. Open a preview to explore its full portfolio collection.' : occasion === 'corporate' ? 'Explore generated concepts alongside real project photographs. Each preview is labelled, and real examples link to the portfolio.' : 'Illustrative design concepts. Every setup can be personalised to your venue, colours and traditions.';
@@ -541,11 +546,15 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
       card.addEventListener('pointerleave', () => { card.style.setProperty('--tilt-x', '0deg'); card.style.setProperty('--tilt-y', '0deg'); });
       return card;
     }));
-    history.replaceState(null, '', 'themes.html?occasion=' + occasion + '&category=' + collection.key);
+    const guideHash = collection.key === 'signboards' && location.hash === '#signboard-guide' ? '#signboard-guide' : '';
+    history.replaceState(null, '', 'themes.html?occasion=' + occasion + '&category=' + collection.key + guideHash);
   }
   for (const collection of available) {
     const button = document.createElement('button'); button.type = 'button'; button.textContent = collection.name;
     button.dataset.category = collection.key; button.addEventListener('click', () => showCollection(collection.key)); filters.append(button);
   }
   showCollection(new URLSearchParams(location.search).get('category'));
+  if (location.hash === '#signboard-guide') {
+    requestAnimationFrame(() => document.querySelector('#signboard-guide:not([hidden])')?.scrollIntoView({block: 'start'}));
+  }
 })();

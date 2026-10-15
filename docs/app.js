@@ -191,6 +191,11 @@ function setOccasion(key, focus = false) {
       const explore = document.createElement('a'); explore.className = 'theme-explore-link';
       explore.href = 'themes.html?category=' + collection.key;
       explore.textContent = 'Explore ' + collection.themes.length + (category.name === 'Exhibition Installation' ? ' project photos ↗' : key === 'corporate' ? ' ideas & projects ↗' : ' themes ↗'); body.append(explore);
+      if (key === 'corporate' && collection.key === 'signboards') {
+        const guide = document.createElement('a'); guide.className = 'theme-explore-link';
+        guide.href = 'themes.html?occasion=corporate&category=signboards#signboard-guide';
+        guide.textContent = 'Compare lighting & materials ↗'; body.append(guide);
+      }
     }
     card.append(preview, body); return card;
   }));

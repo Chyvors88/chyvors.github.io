@@ -48,3 +48,5 @@
 @media(prefers-reduced-motion:reduce){.theme-reel-track{will-change:auto!important}}
 
 .theme-occasion-links{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0 20px}.theme-occasion-links a{padding:12px 20px;border:1px solid #d9ddd3;border-radius:100px;text-decoration:none;font-weight:600}.theme-occasion-links a[aria-current=page]{background:#c7f299;border-color:#c7f299}.theme-dialog-copy .text-link{display:block;margin-top:22px}.theme-dialog-copy .text-link[hidden]{display:none}
+
+.occasion-category-body .theme-explore-link+.theme-explore-link{display:block;margin-top:16px}
