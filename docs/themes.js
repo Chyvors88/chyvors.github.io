@@ -340,6 +340,19 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
 (function () {
   const collections = window.backdroppedThemes;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const reels = new Set();
+  let lastFrame = 0;
+  function animatePreviews(now) {
+    const elapsed = Math.min(now - lastFrame, 50); lastFrame = now;
+    for (const reel of reels) {
+      if (!reel.isConnected) { reels.delete(reel); continue; }
+      if (document.hidden || reduced.matches || !reel.classList.contains('is-moving') || reel.classList.contains('is-offscreen') || reel.classList.contains('is-interacting') || now < reel.resumeAt) continue;
+      reel.scrollLeft -= reel.clientWidth * elapsed / 5000;
+      reel.wrapScroll();
+    }
+    requestAnimationFrame(animatePreviews);
+  }
+  requestAnimationFrame(animatePreviews);
   function createReel(themes, details = false) {
     const reel = document.createElement('div'); reel.className = 'theme-reel';
     if (!reduced.matches) reel.classList.add('is-moving');
@@ -367,7 +380,7 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
         nearby.unobserve(img);
       });
     }, { root: reel, rootMargin: '0px 150px', threshold: 0.01 }) : null;
-    for (let copy = 0; copy < 2; copy++) {
+    for (let copy = 0; copy < 3; copy++) {
       const group = document.createElement('div'); group.className = 'theme-reel-group';
       if (copy) group.setAttribute('aria-hidden', 'true');
       for (const item of views) {
@@ -396,57 +409,65 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
         window.setBackdroppedImage(img, img.dataset.previewSource, '(max-width: 760px) 88vw, 30vw');
       });
     };
-    let gesture;
-    const wrap = (value, length) => ((value % length) + length) % length;
-    function position(delta, start) {
-      const span = track.getBoundingClientRect().width / 2;
+    // Native scrolling gives iOS its normal finger tracking and momentum.
+    // Mouse dragging uses the same scroll position, without seeking a CSS animation.
+    reel.resumeAt = 0;
+    reel.wrapScroll = () => {
+      const span = track.scrollWidth / 3;
       if (!span) return;
-      const animation = track.getAnimations()[0];
-      if (animation) {
-        const duration = Number(animation.effect.getTiming().duration);
-        animation.currentTime = wrap((start ?? Number(animation.currentTime || 0)) + delta / span * duration, duration);
-      } else {
-        // Reduced motion keeps automatic movement off, but still allows manual browsing.
-        const current = start ?? Number(reel.dataset.manualPosition || -span);
-        const offset = wrap(current + delta, span) - span;
-        reel.dataset.manualPosition = String(offset);
-        track.style.transform = 'translateX(' + offset + 'px)';
-      }
-      reel.loadNearby();
-    }
-    reel.addEventListener('pointerdown', event => {
-      if (!event.isPrimary || (event.pointerType === 'mouse' && event.button !== 0)) return;
-      reel.classList.add('is-interacting');
-      const animation = track.getAnimations()[0];
-      gesture = { id: event.pointerId, x: event.clientX, y: event.clientY, dragging: false,
-        start: animation ? Number(animation.currentTime || 0) : Number(reel.dataset.manualPosition || -track.getBoundingClientRect().width / 2) };
-    });
+      if (reel.scrollLeft < span * .25) reel.scrollLeft += span;
+      else if (reel.scrollLeft > span * 1.25) reel.scrollLeft -= span;
+    };
+    requestAnimationFrame(() => { reel.scrollLeft = track.scrollWidth / 3; reel.loadNearby(); });
+    reels.add(reel);
+    let gesture;
     function finish() {
       if (!gesture) return;
       const { id, dragging } = gesture;
       gesture = null;
       if (reel.hasPointerCapture(id)) reel.releasePointerCapture(id);
       reel.classList.remove('is-interacting', 'is-dragging');
+      reel.resumeAt = performance.now() + 1800;
       if (dragging) {
         reel.dataset.suppressClick = 'true';
-        setTimeout(() => { delete reel.dataset.suppressClick; }, 0);
+        setTimeout(() => { delete reel.dataset.suppressClick; }, 400);
       }
     }
+    reel.addEventListener('pointerdown', event => {
+      if (!event.isPrimary || (event.pointerType === 'mouse' && event.button !== 0)) return;
+      reel.classList.add('is-interacting');
+      gesture = { id: event.pointerId, type: event.pointerType, x: event.clientX, y: event.clientY,
+        start: reel.scrollLeft, dragging: false };
+    });
     reel.addEventListener('pointermove', event => {
       if (!gesture || event.pointerId !== gesture.id) return;
       const dx = event.clientX - gesture.x, dy = event.clientY - gesture.y;
-      if (!gesture.dragging) {
-        if (Math.abs(dy) > 8 && Math.abs(dy) > Math.abs(dx)) { finish(); return; }
-        if (Math.abs(dx) < 8) return;
-        gesture.dragging = true; reel.setPointerCapture(event.pointerId); reel.classList.add('is-dragging');
-      }
-      event.preventDefault(); position(dx, gesture.start);
+      if (Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy)) gesture.dragging = true;
+      // Leave touch gestures entirely to the browser, including vertical page scrolling.
+      if (gesture.type !== 'mouse' || !gesture.dragging) return;
+      if (!reel.hasPointerCapture(event.pointerId)) reel.setPointerCapture(event.pointerId);
+      reel.classList.add('is-dragging');
+      event.preventDefault(); reel.scrollLeft = gesture.start - dx;
+      reel.loadNearby();
     });
     reel.addEventListener('pointerup', finish);
-    reel.addEventListener('pointerleave', () => { if (gesture && !gesture.dragging) finish(); });
     reel.addEventListener('pointercancel', finish);
     reel.addEventListener('lostpointercapture', finish);
-    // A completed swipe must not open the gallery's enlarged-photo button.
+    reel.addEventListener('pointerleave', () => { if (gesture?.type === 'mouse' && !gesture.dragging) finish(); });
+    reel.addEventListener('touchstart', () => {
+      reel.classList.add('is-interacting');
+    }, { passive: true });
+    const endTouch = () => {
+      reel.classList.remove('is-interacting');
+      reel.resumeAt = performance.now() + 1800;
+    };
+    reel.addEventListener('touchend', endTouch, { passive: true });
+    reel.addEventListener('touchcancel', endTouch, { passive: true });
+    reel.addEventListener('scroll', () => {
+      // Momentum extends the hands-off period so autoplay never fights a swipe.
+      if (performance.now() < reel.resumeAt) reel.resumeAt = performance.now() + 1800;
+      if (!gesture) reel.wrapScroll();
+    }, { passive: true });
     reel.addEventListener('click', event => {
       if (reel.dataset.suppressClick) { event.preventDefault(); event.stopPropagation(); }
     }, true);

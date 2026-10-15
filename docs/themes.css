@@ -48,3 +48,10 @@
 .theme-occasion-links{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0 20px}.theme-occasion-links a{padding:12px 20px;border:1px solid #d9ddd3;border-radius:100px;text-decoration:none;font-weight:600}.theme-occasion-links a[aria-current=page]{background:#c7f299;border-color:#c7f299}.theme-dialog-copy .text-link{display:block;margin-top:22px}.theme-dialog-copy .text-link[hidden]{display:none}
 
 .occasion-category-body .theme-explore-link+.theme-explore-link{display:block;margin-top:16px}
+
+/* Use native horizontal scrolling and momentum on touch devices. */
+.theme-reel{overflow-x:auto;overflow-y:hidden;touch-action:pan-x pan-y pinch-zoom;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain}
+.theme-reel::-webkit-scrollbar{display:none}
+.theme-reel .theme-reel-track{width:calc(300% * var(--theme-count));animation:none!important;transform:none!important;will-change:auto!important}
+.theme-reel-group{width:33.3333333333%}
+.theme-reel img{-webkit-user-drag:none;-webkit-touch-callout:none}
