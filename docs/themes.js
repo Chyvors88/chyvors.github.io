@@ -347,7 +347,10 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
     if ('IntersectionObserver' in window) {
       reel.classList.add('is-offscreen');
       const visibility = new IntersectionObserver(entries => {
-        entries.forEach(entry => entry.target.classList.toggle('is-offscreen', !entry.isIntersecting));
+        entries.forEach(entry => {
+          entry.target.classList.toggle('is-offscreen', !entry.isIntersecting);
+          if (entry.isIntersecting) entry.target.loadNearby?.();
+        });
       }, { threshold: 0.01 });
       visibility.observe(reel);
     }
@@ -382,6 +385,17 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
       track.append(group);
     }
     reel.append(track);
+    // GPU-driven transforms do not consistently trigger image observers on mobile.
+    // Check the current slide and its neighbours as well, including after a drag.
+    reel.loadNearby = () => {
+      const bounds = reel.getBoundingClientRect(), margin = reel.clientWidth;
+      track.querySelectorAll('img:not([src])').forEach(img => {
+        const box = img.getBoundingClientRect();
+        if (box.right < bounds.left - margin || box.left > bounds.right + margin) return;
+        img.loading = 'eager';
+        window.setBackdroppedImage(img, img.dataset.previewSource, '(max-width: 760px) 88vw, 30vw');
+      });
+    };
     let gesture;
     const wrap = (value, length) => ((value % length) + length) % length;
     function position(delta, start) {
@@ -398,6 +412,7 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
         reel.dataset.manualPosition = String(offset);
         track.style.transform = 'translateX(' + offset + 'px)';
       }
+      reel.loadNearby();
     }
     reel.movePreview = direction => position(direction * reel.clientWidth);
     reel.addEventListener('pointerdown', event => {
@@ -457,6 +472,9 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
     controls.append(button); return controls;
   }
   window.backdroppedThemeUI = { createReel, createMotionButton };
+  setInterval(() => {
+    if (!document.hidden) document.querySelectorAll('.theme-reel:not(.is-offscreen)').forEach(reel => reel.loadNearby());
+  }, 500);
   document.addEventListener('visibilitychange', () => document.body.classList.toggle('previews-hidden', document.hidden));
   const themeField = document.querySelector('[name="details"]');
   const requestedTheme = new URLSearchParams(location.search).get('theme');
