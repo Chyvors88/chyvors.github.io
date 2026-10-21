@@ -2455,66 +2455,6 @@
     ]
   },
   {
-    "id": "peppa-pig-concept-corner",
-    "name": "Peppa Pig concept corner",
-    "description": "Seasonal printed characters, panel graphics and a compact retail concept display.",
-    "category": "retail-fixtures",
-    "services": [
-      "Retail fixtures",
-      "Banners & display boards"
-    ],
-    "cover": {
-      "image": "assets/portfolio/project-095.jpg",
-      "thumb": "assets/portfolio/project-095-thumb.jpg",
-      "alt": "Giant Peppa Pig Concept Corner",
-      "width": 1200,
-      "height": 1600,
-      "sourceIndex": 95,
-      "enhanced": "assets/portfolio-enhanced/project-095.jpg",
-      "enhancedThumb": "assets/portfolio-enhanced/project-095-thumb.jpg",
-      "enhancedWidth": 1086,
-      "enhancedHeight": 1448
-    },
-    "photos": [
-      {
-        "image": "assets/portfolio/project-093.jpg",
-        "thumb": "assets/portfolio/project-093-thumb.jpg",
-        "alt": "Giant Peppa Pig Concept Corner",
-        "width": 1200,
-        "height": 1600,
-        "sourceIndex": 93,
-        "enhanced": "assets/portfolio-enhanced/project-093.jpg",
-        "enhancedThumb": "assets/portfolio-enhanced/project-093-thumb.jpg",
-        "enhancedWidth": 1086,
-        "enhancedHeight": 1448
-      },
-      {
-        "image": "assets/portfolio/project-094.jpg",
-        "thumb": "assets/portfolio/project-094-thumb.jpg",
-        "alt": "Giant Peppa Pig Concept Corner",
-        "width": 1200,
-        "height": 1600,
-        "sourceIndex": 94,
-        "enhanced": "assets/portfolio-enhanced/project-094.jpg",
-        "enhancedThumb": "assets/portfolio-enhanced/project-094-thumb.jpg",
-        "enhancedWidth": 1086,
-        "enhancedHeight": 1448
-      },
-      {
-        "image": "assets/portfolio/project-095.jpg",
-        "thumb": "assets/portfolio/project-095-thumb.jpg",
-        "alt": "Giant Peppa Pig Concept Corner",
-        "width": 1200,
-        "height": 1600,
-        "sourceIndex": 95,
-        "enhanced": "assets/portfolio-enhanced/project-095.jpg",
-        "enhancedThumb": "assets/portfolio-enhanced/project-095-thumb.jpg",
-        "enhancedWidth": 1086,
-        "enhancedHeight": 1448
-      }
-    ]
-  },
-  {
     "id": "play-doh-custom-fixture",
     "name": "Play-Doh custom fixture",
     "description": "A colourful product fixture with a playful cart silhouette and branded display surfaces.",
@@ -2571,41 +2511,6 @@
         "sourceIndex": 15,
         "enhanced": "assets/portfolio-enhanced/project-015.jpg",
         "enhancedThumb": "assets/portfolio-enhanced/project-015-thumb.jpg",
-        "enhancedWidth": 1448,
-        "enhancedHeight": 1086
-      }
-    ]
-  },
-  {
-    "id": "cision-reception-signage",
-    "name": "Cision reception signage",
-    "description": "Raised metallic letters mounted across a dark panel at the reception entrance.",
-    "category": "signboards",
-    "services": [
-      "Signboards"
-    ],
-    "cover": {
-      "image": "assets/portfolio/project-071.jpg",
-      "thumb": "assets/portfolio/project-071-thumb.jpg",
-      "alt": "Cision Signboard, aluminium backdrop and stainless steel die cut",
-      "width": 1600,
-      "height": 1200,
-      "sourceIndex": 71,
-      "enhanced": "assets/portfolio-enhanced/project-071.jpg",
-      "enhancedThumb": "assets/portfolio-enhanced/project-071-thumb.jpg",
-      "enhancedWidth": 1448,
-      "enhancedHeight": 1086
-    },
-    "photos": [
-      {
-        "image": "assets/portfolio/project-071.jpg",
-        "thumb": "assets/portfolio/project-071-thumb.jpg",
-        "alt": "Cision Signboard, aluminium backdrop and stainless steel die cut",
-        "width": 1600,
-        "height": 1200,
-        "sourceIndex": 71,
-        "enhanced": "assets/portfolio-enhanced/project-071.jpg",
-        "enhancedThumb": "assets/portfolio-enhanced/project-071-thumb.jpg",
         "enhancedWidth": 1448,
         "enhancedHeight": 1086
       }
@@ -2672,33 +2577,6 @@
         "width": 1200,
         "height": 1600,
         "sourceIndex": 202
-      }
-    ]
-  },
-  {
-    "id": "sg-hr-services-reception-sign",
-    "name": "SG HR Services reception sign",
-    "description": "Back-lit lettering fitted to a curved reception feature wall.",
-    "category": "signboards",
-    "services": [
-      "Signboards"
-    ],
-    "cover": {
-      "image": "assets/portfolio/project-209.jpg",
-      "thumb": "assets/portfolio/project-209-thumb.jpg",
-      "alt": "SG HR Services Pte Ltd Back-lit Sign",
-      "width": 1600,
-      "height": 1200,
-      "sourceIndex": 209
-    },
-    "photos": [
-      {
-        "image": "assets/portfolio/project-209.jpg",
-        "thumb": "assets/portfolio/project-209-thumb.jpg",
-        "alt": "SG HR Services Pte Ltd Back-lit Sign",
-        "width": 1600,
-        "height": 1200,
-        "sourceIndex": 209
       }
     ]
   },
@@ -2838,41 +2716,6 @@
         "sourceIndex": 134,
         "enhanced": "assets/portfolio-enhanced/project-134.jpg",
         "enhancedThumb": "assets/portfolio-enhanced/project-134-thumb.jpg",
-        "enhancedWidth": 1448,
-        "enhancedHeight": 1086
-      }
-    ]
-  },
-  {
-    "id": "level-up-tuition-centre-lightbox",
-    "name": "Level Up Tuition Centre lightbox",
-    "description": "A bright rectangular lightbox sign for a neighbourhood tuition-centre entrance.",
-    "category": "signboards",
-    "services": [
-      "Signboards"
-    ],
-    "cover": {
-      "image": "assets/portfolio/project-139.jpg",
-      "thumb": "assets/portfolio/project-139-thumb.jpg",
-      "alt": "Level Up Tuition Centre Signage (Lightbox)",
-      "width": 1600,
-      "height": 1200,
-      "sourceIndex": 139,
-      "enhanced": "assets/portfolio-enhanced/project-139.jpg",
-      "enhancedThumb": "assets/portfolio-enhanced/project-139-thumb.jpg",
-      "enhancedWidth": 1448,
-      "enhancedHeight": 1086
-    },
-    "photos": [
-      {
-        "image": "assets/portfolio/project-139.jpg",
-        "thumb": "assets/portfolio/project-139-thumb.jpg",
-        "alt": "Level Up Tuition Centre Signage (Lightbox)",
-        "width": 1600,
-        "height": 1200,
-        "sourceIndex": 139,
-        "enhanced": "assets/portfolio-enhanced/project-139.jpg",
-        "enhancedThumb": "assets/portfolio-enhanced/project-139-thumb.jpg",
         "enhancedWidth": 1448,
         "enhancedHeight": 1086
       }
@@ -3160,125 +3003,6 @@
         "enhancedThumb": "assets/portfolio-enhanced/project-097-thumb.jpg",
         "enhancedWidth": 842,
         "enhancedHeight": 1868
-      }
-    ]
-  },
-  {
-    "id": "tiong-bahru-bakery-hoarding",
-    "name": "Tiong Bahru Bakery hoarding",
-    "description": "Illustrated printed hoarding graphics along a mall walkway.",
-    "category": "hoardings",
-    "services": [
-      "Stickers",
-      "Hoarding graphics"
-    ],
-    "cover": {
-      "image": "assets/portfolio/project-222.jpg",
-      "thumb": "assets/portfolio/project-222-thumb.jpg",
-      "alt": "Tiong Bahru Bakery Hoarding Sticker",
-      "width": 1600,
-      "height": 901,
-      "sourceIndex": 222
-    },
-    "photos": [
-      {
-        "image": "assets/portfolio/project-221.jpg",
-        "thumb": "assets/portfolio/project-221-thumb.jpg",
-        "alt": "Tiong Bahru Bakery Hoarding Sticker",
-        "width": 901,
-        "height": 1600,
-        "sourceIndex": 221
-      },
-      {
-        "image": "assets/portfolio/project-222.jpg",
-        "thumb": "assets/portfolio/project-222-thumb.jpg",
-        "alt": "Tiong Bahru Bakery Hoarding Sticker",
-        "width": 1600,
-        "height": 901,
-        "sourceIndex": 222
-      }
-    ]
-  },
-  {
-    "id": "koo-kee-hoarding-campaign",
-    "name": "Koo Kee hoarding campaign",
-    "description": "A continuous food campaign graphic across a curved mall hoarding.",
-    "category": "hoardings",
-    "services": [
-      "Stickers",
-      "Hoarding graphics"
-    ],
-    "cover": {
-      "image": "assets/portfolio/project-137.jpg",
-      "thumb": "assets/portfolio/project-137-thumb.jpg",
-      "alt": "Koo Kee Hoarding Sticker",
-      "width": 1600,
-      "height": 1200,
-      "sourceIndex": 137,
-      "enhanced": "assets/portfolio-enhanced/project-137.jpg",
-      "enhancedThumb": "assets/portfolio-enhanced/project-137-thumb.jpg",
-      "enhancedWidth": 1448,
-      "enhancedHeight": 1086
-    },
-    "photos": [
-      {
-        "image": "assets/portfolio/project-137.jpg",
-        "thumb": "assets/portfolio/project-137-thumb.jpg",
-        "alt": "Koo Kee Hoarding Sticker",
-        "width": 1600,
-        "height": 1200,
-        "sourceIndex": 137,
-        "enhanced": "assets/portfolio-enhanced/project-137.jpg",
-        "enhancedThumb": "assets/portfolio-enhanced/project-137-thumb.jpg",
-        "enhancedWidth": 1448,
-        "enhancedHeight": 1086
-      }
-    ]
-  },
-  {
-    "id": "heavenly-wang-event-wall",
-    "name": "Heavenly Wang event wall",
-    "description": "A flat printed brand wall, with preparation and wider installation views.",
-    "category": "backdrops",
-    "services": [
-      "Backdrops"
-    ],
-    "cover": {
-      "image": "assets/portfolio/project-129.jpg",
-      "thumb": "assets/portfolio/project-129-thumb.jpg",
-      "alt": "Heavenly Wang Backdrop",
-      "width": 739,
-      "height": 1600,
-      "sourceIndex": 129,
-      "enhanced": "assets/portfolio-enhanced/project-129.jpg",
-      "enhancedThumb": "assets/portfolio-enhanced/project-129-thumb.jpg",
-      "enhancedWidth": 853,
-      "enhancedHeight": 1844
-    },
-    "photos": [
-      {
-        "image": "assets/portfolio/project-128.jpg",
-        "thumb": "assets/portfolio/project-128-thumb.jpg",
-        "alt": "Heavenly Wang Backdrop",
-        "width": 739,
-        "height": 1600,
-        "sourceIndex": 128,
-        "enhanced": "assets/portfolio-enhanced/project-128.jpg",
-        "enhancedThumb": "assets/portfolio-enhanced/project-128-thumb.jpg",
-        "enhancedWidth": 853,
-        "enhancedHeight": 1844
-      },
-      {
-        "image": "assets/portfolio/project-129.jpg",
-        "thumb": "assets/portfolio/project-129-thumb.jpg",
-        "alt": "Heavenly Wang Backdrop",
-        "width": 739,
-        "height": 1600,
-        "sourceIndex": 129,
-        "enhanced": "assets/portfolio-enhanced/project-129.jpg",
-        "enhancedThumb": "assets/portfolio-enhanced/project-129-thumb.jpg",
-        "enhancedWidth": 853,
-        "enhancedHeight": 1844
       }
     ]
   },

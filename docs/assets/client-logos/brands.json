@@ -78,34 +78,10 @@
     "presentation": "official-logo"
   },
   {
-    "name": "Giant",
-    "project": "peppa-pig-concept-corner",
-    "asset": "giant.png",
-    "presentation": "user-supplied-logo"
-  },
-  {
-    "name": "Cision",
-    "project": "cision-reception-signage",
-    "asset": "cision.svg",
-    "presentation": "official-logo"
-  },
-  {
     "name": "Optical 88",
     "project": "optical-88-storefront-display",
     "asset": "optical-88.png",
     "presentation": "user-supplied-logo"
-  },
-  {
-    "name": "SG HR Services",
-    "project": "sg-hr-services-reception-sign",
-    "asset": "sg-hr.png",
-    "presentation": "official-logo"
-  },
-  {
-    "name": "Tiong Bahru Bakery",
-    "project": "tiong-bahru-bakery-hoarding",
-    "asset": "tiong-bahru-bakery.png",
-    "presentation": "official-logo"
   },
   {
     "name": "Toyogo",
@@ -162,12 +138,6 @@
     "presentation": "user-supplied-logo"
   },
   {
-    "name": "Level Up Tuition Centre",
-    "project": "level-up-tuition-centre-lightbox",
-    "asset": "level-up.png",
-    "presentation": "user-supplied-logo"
-  },
-  {
     "name": "Essilor",
     "project": "essilor-optical-campaigns",
     "asset": "essilor.png",
@@ -177,18 +147,6 @@
     "name": "Guardian",
     "project": "guardian-hoarding-graphics",
     "asset": "guardian.png",
-    "presentation": "user-supplied-logo"
-  },
-  {
-    "name": "Koo Kee",
-    "project": "koo-kee-hoarding-campaign",
-    "asset": "koo-kee.png",
-    "presentation": "user-supplied-logo"
-  },
-  {
-    "name": "Heavenly Wang",
-    "project": "heavenly-wang-event-wall",
-    "asset": "heavenly-wang.png",
     "presentation": "user-supplied-logo"
   },
   {

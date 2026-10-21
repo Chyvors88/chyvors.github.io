@@ -2,7 +2,7 @@
   const projects = window.backdroppedPortfolio || [];
   const grid = document.querySelector('#portfolio-grid');
   if (!grid) return;
-  const categories = [['all', 'All work'], ['exhibitions','Exhibitions'], ['signboards','Signboards'], ['retail-graphics','Retail graphics'], ['window-displays','Window displays'], ['retail-fixtures','Retail fixtures'], ['backdrops','Backdrops'], ['hoardings','Hoardings'], ['personal-displays','Personal displays'], ['brand-print','Brand & print'], ['production','Production']];
+  const categories = [['all', 'All work'], ['exhibitions','Exhibitions'], ['signboards','Shop & business signs'], ['retail-graphics','Stickers & surface graphics'], ['window-displays','Shop windows'], ['retail-fixtures','Retail displays & fixtures'], ['backdrops','Backdrops'], ['hoardings','Temporary wall graphics'], ['personal-displays','Personal displays'], ['brand-print','Design & printed stationery'], ['production','Production']];
   const serviceFilters = {'exhibitions':'Exhibition booths','signboards':'Signboards','retail-graphics':'Stickers','window-displays':'Window displays','retail-fixtures':'Retail fixtures','backdrops':'Backdrops','hoardings':'Hoarding graphics','personal-displays':'Personal displays','brand-print':'Print collateral','production':'Production'};
   const filters = document.querySelector('#portfolio-filters');
   const search = document.querySelector('#portfolio-search');

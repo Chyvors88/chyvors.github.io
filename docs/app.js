@@ -63,9 +63,9 @@ const content = {
         "name": "Table decorations",
         "description": "Carry your colours and theme through every table.",
         "items": [
-          "Themed table styling",
+          "Table signs & decorative pieces",
           "Decorative table details",
-          "Coordinated backdrop & signage styling"
+          "Matching backdrop & table signage"
         ],
         "image": "assets/mockups/table-decorations.jpg",
         "alt": "Pink event table styling with flowers, lime napkins and blue acrylic table number concept"
@@ -80,76 +80,96 @@ const content = {
     "description": "Backdrop and signage design, printing and installation for events, exhibitions and business premises. Explore the options below, with dismantling and collection arranged in your quote where needed.",
     "categories": [
       {
-        "name": "Stickers",
-        "description": "Turn everyday surfaces into spaces for your brand.",
-        "items": [
-          "Floor stickers",
-          "Wall stickers",
-          "Glass stickers",
-          "Fridge stickers", "Hoarding graphics", "Pillar & escalator graphics", "Die-cut stickers"
-        ],
-        "image": "assets/mockups/stickers.jpg",
-        "alt": "Retail floor, wall, glass and fridge sticker graphics concept"
-      },
-      {
-        "name": "Backdrops",
-        "description": "Put your brand at the centre of the moment.",
+        "name": "Event backdrops",
+        "description": "For a photo area, stage or branded event wall. Choose a design, then arrange printing, installation and teardown.",
         "items": [
           "Event & stage backdrops",
           "Branded photo backdrops",
-          "Media walls", "Exhibition booth graphics"
+          "Media walls",
+          "Exhibition booth graphics"
         ],
         "image": "assets/mockups/corporate-backdrops.jpg",
         "alt": "Blue and lime corporate stage and media wall backdrop concept"
       },
       {
-        "name": "Signboards",
-        "description": "Give your business a presence that stands out.",
+        "name": "Shop & business signs",
+        "description": "For your shopfront, reception or business name. Explore illuminated letters, lightboxes and metal signs.",
         "items": [
-          "LED",
-          "Front lit",
-          "Back lit",
-          "Aluminium",
-          "Stainless steel", "Lightbox signs"
+          "LED-lit signs",
+          "Front-lit letters (glowing face)",
+          "Back-lit letters (halo glow)",
+          "Aluminium signs",
+          "Stainless steel signs",
+          "Lightbox signs"
         ],
         "image": "assets/mockups/signboards.jpg",
         "alt": "LED, front-lit, back-lit and metal signboard showroom concept"
       },
       {
-        "name": "Acrylic signages",
-        "description": "A clean finish for your message and branding.",
+        "name": "Stickers & surface graphics",
+        "description": "For adding printed graphics to floors, walls, glass, fridges and temporary shop hoardings.",
         "items": [
-          "Custom acrylic signage", "Acrylic product displays", "Acrylic wayfinding"
+          "Floor stickers",
+          "Wall stickers",
+          "Glass stickers",
+          "Fridge stickers",
+          "Hoarding graphics",
+          "Pillar & escalator graphics",
+          "Die-cut stickers"
+        ],
+        "image": "assets/mockups/stickers.jpg",
+        "alt": "Retail floor, wall, glass and fridge sticker graphics concept"
+      },
+      {
+        "name": "Acrylic signs & small displays",
+        "description": "For welcome signs, reception logos, directions and small product displays made from acrylic.",
+        "items": [
+          "Custom acrylic signage",
+          "Acrylic product displays",
+          "Acrylic wayfinding"
         ],
         "image": "assets/mockups/acrylic-signages.jpg",
         "alt": "Clear acrylic sign mounted with metal standoffs and blue raised lettering concept"
       },
       {
-        "name": "Window displays",
-        "description": "Create an eye-catching moment for your storefront.",
+        "name": "Shop windows & retail displays",
+        "description": "For storefront windows, product shelves, display risers and promotional corners in shops.",
         "items": [
-          "Branded window displays", "Custom retail fixtures", "Concept corners", "Product display risers"
+          "Branded window displays",
+          "Custom retail fixtures",
+          "Concept corners",
+          "Product display risers"
         ],
         "image": "assets/mockups/window-displays.jpg",
         "alt": "Retail window graphics and sculptural display installation concept"
       },
       {
-        "name": "Banners & display boards",
-        "description": "Choose a material to suit your message and space.",
+        "name": "Banners, boards & printed signs",
+        "description": "For promotional banners, freestanding boards, cutout standees and printed directions.",
         "items": [
-          "Foam board",
-          "Fabric",
-          "Vinyl",
-          "PVC",
-          "Kapaline", "Hanging wayfinding banners", "Life-size standees", "Print collateral & name cards", "Brand artwork & logo design"
+          "Foam board displays",
+          "Fabric banners",
+          "Vinyl prints",
+          "PVC banners & boards",
+          "Kapaline display boards",
+          "Hanging wayfinding banners",
+          "Life-size standees",
+          "Print collateral & name cards",
+          "Brand artwork & logo design"
         ],
         "image": "assets/mockups/banners-display-boards.jpg",
         "alt": "Fabric and vinyl banners with rigid foam and PVC display boards concept"
       },
       {
-        "name": "Exhibition Installation",
-        "description": "Bring your exhibition space together, from brand graphics and display fixtures to delivery and on-site installation.",
-        "items": ["Exhibition booth installation", "Exhibition graphics & backdrops", "Display fixtures & product displays", "Transport & on-site setup"],
+        "name": "Exhibition setup & dismantling",
+        "description": "For booth graphics, backdrops, counters and display fixtures. We deliver, install and dismantle the agreed display, rather than organise the exhibition.",
+        "items": [
+          "Exhibition booth installation",
+          "Exhibition graphics & backdrops",
+          "Display fixtures & product displays",
+          "Transport & on-site setup",
+          "Dismantling & collection"
+        ],
         "image": "assets/portfolio/project-140.jpg",
         "alt": "Meiji exhibition booth with branded counter, display graphics and installed fixtures"
       }
@@ -175,7 +195,7 @@ function setOccasion(key, focus = false) {
     const list = document.createElement('ul');
     list.append(...category.items.map(item => {const li = document.createElement('li'); li.textContent = item; return li;}));
     const preview = document.createElement('figure'); preview.className = 'occasion-category-preview';
-    const caption = document.createElement('figcaption'); caption.textContent = category.name === 'Exhibition Installation' ? 'Real exhibition projects' : key === 'corporate' ? 'Concepts & real projects' : 'Concept preview';
+    const caption = document.createElement('figcaption'); caption.textContent = category.name === 'Exhibition setup & dismantling' ? 'Real exhibition projects' : key === 'corporate' ? 'Concepts & real projects' : 'Concept preview';
     const collection = window.backdroppedThemes?.find(c => c.name === category.name);
     if (collection && window.backdroppedThemeUI) {
       const reel = window.backdroppedThemeUI.createReel(collection.themes);
@@ -190,7 +210,7 @@ function setOccasion(key, focus = false) {
     if (collection) {
       const explore = document.createElement('a'); explore.className = 'theme-explore-link';
       explore.href = 'themes.html?category=' + collection.key;
-      explore.textContent = 'Explore ' + collection.themes.length + (category.name === 'Exhibition Installation' ? ' project photos ↗' : key === 'corporate' ? ' ideas & projects ↗' : ' themes ↗'); body.append(explore);
+      explore.textContent = 'Explore ' + collection.themes.length + (category.name === 'Exhibition setup & dismantling' ? ' project photos ↗' : key === 'corporate' ? ' ideas & projects ↗' : ' themes ↗'); body.append(explore);
       if (key === 'corporate' && collection.key === 'signboards') {
         const guide = document.createElement('a'); guide.className = 'theme-explore-link';
         guide.href = 'themes.html?occasion=corporate&category=signboards#signboard-guide';

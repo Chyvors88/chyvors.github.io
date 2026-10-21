@@ -1,8 +1,154 @@
 [
   {
+    "key": "corporate-backdrops",
+    "name": "Event backdrops",
+    "intro": "For a photo area, stage or branded event wall. Choose a design, then arrange printing, installation and teardown.",
+    "occasion": "corporate",
+    "themes": [
+      {
+        "id": "future-forum",
+        "name": "Future Forum",
+        "description": "A crisp conference photo wall with a confident blue-and-lime identity.",
+        "setting": "Conference foyer · Blue, lime & white",
+        "image": "assets/corporate-themes/future-forum.jpg",
+        "kind": "concept",
+        "occasion": "corporate"
+      },
+      {
+        "id": "real-corporate-backdrops-fairprice-event-backdrops",
+        "name": "FairPrice event backdrops",
+        "description": "Printed event walls and photo settings with campaign graphics, shown from several perspectives.",
+        "setting": "From the project portfolio · Backdrops, Banners & display boards",
+        "image": "assets/portfolio/project-077.jpg",
+        "kind": "real",
+        "occasion": "corporate",
+        "project": "fairprice-event-backdrops"
+      },
+      {
+        "id": "launch-in-colour",
+        "name": "Launch in Colour",
+        "description": "A bright launch setting with printed panels and a small product display.",
+        "setting": "Product launch lounge · Pink, orange & blue",
+        "image": "assets/corporate-themes/launch-in-colour.jpg",
+        "kind": "concept",
+        "occasion": "corporate"
+      },
+      {
+        "id": "heritage-business",
+        "name": "Heritage Business",
+        "description": "Singapore heritage motifs give your brand moment a distinctive local character.",
+        "setting": "Hotel ballroom · Terracotta, cream & jade",
+        "image": "assets/corporate-themes/heritage-business.jpg",
+        "kind": "concept",
+        "occasion": "corporate"
+      },
+      {
+        "id": "real-corporate-backdrops-amity-learning-spaces",
+        "name": "Amity learning spaces",
+        "description": "Wall and glass graphics, die-cut motifs, a curved branded backdrop and life-size printed standees.",
+        "setting": "From the project portfolio · Stickers, Backdrops",
+        "image": "assets/portfolio/project-003.jpg",
+        "kind": "real",
+        "occasion": "corporate",
+        "project": "amity-learning-spaces"
+      },
+      {
+        "id": "eco-exhibition",
+        "name": "Eco Exhibition",
+        "description": "A compact exhibition corner with coordinated graphics, counters and product shelves.",
+        "setting": "Singapore exhibition hall · Sage, white & blue",
+        "image": "assets/corporate-themes/eco-exhibition.jpg",
+        "kind": "concept",
+        "occasion": "corporate"
+      },
+      {
+        "id": "celebration-wall",
+        "name": "Celebration Wall",
+        "description": "A cheerful company milestone wall with a playful balloon accent.",
+        "setting": "Corporate dinner foyer · Pink, lime & champagne",
+        "image": "assets/corporate-themes/celebration-wall.jpg",
+        "kind": "concept",
+        "occasion": "corporate"
+      }
+    ]
+  },
+  {
+    "key": "signboards",
+    "name": "Shop & business signs",
+    "intro": "For your shopfront, reception or business name. Explore illuminated letters, lightboxes and metal signs.",
+    "occasion": "corporate",
+    "themes": [
+      {
+        "id": "neon-social",
+        "name": "Neon Social",
+        "description": "A vibrant LED sign gives a neighbourhood café a memorable entrance.",
+        "setting": "Shophouse café frontage · Blue & coral",
+        "image": "assets/corporate-themes/neon-social.jpg",
+        "kind": "concept",
+        "occasion": "corporate"
+      },
+      {
+        "id": "real-signboards-pike-six-signboard",
+        "name": "Pike Six signboard",
+        "description": "Gold-tone illuminated lettering and storefront detail views for the Pike Six entrance.",
+        "setting": "From the project portfolio · Signboards",
+        "image": "assets/portfolio/project-204.jpg",
+        "kind": "real",
+        "occasion": "corporate",
+        "project": "pike-six-signboard"
+      },
+      {
+        "id": "halo-office",
+        "name": "Halo Office",
+        "description": "Soft halo lighting adds depth to refined reception lettering.",
+        "setting": "Office reception · White, blue & timber",
+        "image": "assets/corporate-themes/halo-office.jpg",
+        "kind": "concept",
+        "occasion": "corporate"
+      },
+      {
+        "id": "real-signboards-astria-holdings-halo-lettering",
+        "name": "Astria Holdings halo lettering",
+        "description": "Back-lit metal lettering creates a clean reception-wall brand presence.",
+        "setting": "From the project portfolio · Signboards",
+        "image": "assets/portfolio/project-015.jpg",
+        "kind": "real",
+        "occasion": "corporate",
+        "project": "astria-holdings-halo-lettering"
+      },
+      {
+        "id": "aluminium-studio",
+        "name": "Aluminium Studio",
+        "description": "Brushed metal and simple lettering create a clean creative-studio entrance.",
+        "setting": "Creative studio entrance · Brushed metal & pink",
+        "image": "assets/corporate-themes/aluminium-studio.jpg",
+        "kind": "concept",
+        "occasion": "corporate"
+      },
+      {
+        "id": "lightbox-corner",
+        "name": "Lightbox Corner",
+        "description": "A bright lightbox keeps a small retail frontage easy to recognise.",
+        "setting": "Small retail shop · Lime, white & blue",
+        "image": "assets/corporate-themes/lightbox-corner.jpg",
+        "kind": "concept",
+        "occasion": "corporate"
+      },
+      {
+        "id": "front-lit-market",
+        "name": "Front-lit Market",
+        "description": "Clear illuminated lettering helps a storefront stand out after dark.",
+        "setting": "Neighbourhood storefront · Orange, white & green",
+        "image": "assets/corporate-themes/front-lit-market.jpg",
+        "kind": "concept",
+        "occasion": "corporate"
+      }
+    ]
+  },
+  {
     "key": "stickers",
-    "name": "Stickers",
-    "intro": "Surface graphics that carry your campaign from the floor to the storefront.",
+    "name": "Stickers & surface graphics",
+    "intro": "For adding printed graphics to floors, walls, glass, fridges and temporary shop hoardings.",
     "occasion": "corporate",
     "themes": [
       {
@@ -83,175 +229,9 @@
     ]
   },
   {
-    "key": "corporate-backdrops",
-    "name": "Backdrops",
-    "intro": "Printed event walls, photo moments and compact exhibition settings for your brand.",
-    "occasion": "corporate",
-    "themes": [
-      {
-        "id": "future-forum",
-        "name": "Future Forum",
-        "description": "A crisp conference photo wall with a confident blue-and-lime identity.",
-        "setting": "Conference foyer · Blue, lime & white",
-        "image": "assets/corporate-themes/future-forum.jpg",
-        "kind": "concept",
-        "occasion": "corporate"
-      },
-      {
-        "id": "real-corporate-backdrops-fairprice-event-backdrops",
-        "name": "FairPrice event backdrops",
-        "description": "Printed event walls and photo settings with campaign graphics, shown from several perspectives.",
-        "setting": "From the project portfolio · Backdrops, Banners & display boards",
-        "image": "assets/portfolio/project-077.jpg",
-        "kind": "real",
-        "occasion": "corporate",
-        "project": "fairprice-event-backdrops"
-      },
-      {
-        "id": "launch-in-colour",
-        "name": "Launch in Colour",
-        "description": "A bright launch setting with printed panels and a small product display.",
-        "setting": "Product launch lounge · Pink, orange & blue",
-        "image": "assets/corporate-themes/launch-in-colour.jpg",
-        "kind": "concept",
-        "occasion": "corporate"
-      },
-      {
-        "id": "real-corporate-backdrops-heavenly-wang-event-wall",
-        "name": "Heavenly Wang event wall",
-        "description": "A flat printed brand wall, with preparation and wider installation views.",
-        "setting": "From the project portfolio · Backdrops",
-        "image": "assets/portfolio/project-129.jpg",
-        "kind": "real",
-        "occasion": "corporate",
-        "project": "heavenly-wang-event-wall"
-      },
-      {
-        "id": "heritage-business",
-        "name": "Heritage Business",
-        "description": "Singapore heritage motifs give your brand moment a distinctive local character.",
-        "setting": "Hotel ballroom · Terracotta, cream & jade",
-        "image": "assets/corporate-themes/heritage-business.jpg",
-        "kind": "concept",
-        "occasion": "corporate"
-      },
-      {
-        "id": "real-corporate-backdrops-amity-learning-spaces",
-        "name": "Amity learning spaces",
-        "description": "Wall and glass graphics, die-cut motifs, a curved branded backdrop and life-size printed standees.",
-        "setting": "From the project portfolio · Stickers, Backdrops",
-        "image": "assets/portfolio/project-003.jpg",
-        "kind": "real",
-        "occasion": "corporate",
-        "project": "amity-learning-spaces"
-      },
-      {
-        "id": "eco-exhibition",
-        "name": "Eco Exhibition",
-        "description": "A compact exhibition corner with coordinated graphics, counters and product shelves.",
-        "setting": "Singapore exhibition hall · Sage, white & blue",
-        "image": "assets/corporate-themes/eco-exhibition.jpg",
-        "kind": "concept",
-        "occasion": "corporate"
-      },
-      {
-        "id": "celebration-wall",
-        "name": "Celebration Wall",
-        "description": "A cheerful company milestone wall with a playful balloon accent.",
-        "setting": "Corporate dinner foyer · Pink, lime & champagne",
-        "image": "assets/corporate-themes/celebration-wall.jpg",
-        "kind": "concept",
-        "occasion": "corporate"
-      }
-    ]
-  },
-  {
-    "key": "signboards",
-    "name": "Signboards",
-    "intro": "Choose a signboard finish that fits your space and brand personality.",
-    "occasion": "corporate",
-    "themes": [
-      {
-        "id": "neon-social",
-        "name": "Neon Social",
-        "description": "A vibrant LED sign gives a neighbourhood café a memorable entrance.",
-        "setting": "Shophouse café frontage · Blue & coral",
-        "image": "assets/corporate-themes/neon-social.jpg",
-        "kind": "concept",
-        "occasion": "corporate"
-      },
-      {
-        "id": "real-signboards-pike-six-signboard",
-        "name": "Pike Six signboard",
-        "description": "Gold-tone illuminated lettering and storefront detail views for the Pike Six entrance.",
-        "setting": "From the project portfolio · Signboards",
-        "image": "assets/portfolio/project-204.jpg",
-        "kind": "real",
-        "occasion": "corporate",
-        "project": "pike-six-signboard"
-      },
-      {
-        "id": "halo-office",
-        "name": "Halo Office",
-        "description": "Soft halo lighting adds depth to refined reception lettering.",
-        "setting": "Office reception · White, blue & timber",
-        "image": "assets/corporate-themes/halo-office.jpg",
-        "kind": "concept",
-        "occasion": "corporate"
-      },
-      {
-        "id": "real-signboards-astria-holdings-halo-lettering",
-        "name": "Astria Holdings halo lettering",
-        "description": "Back-lit metal lettering creates a clean reception-wall brand presence.",
-        "setting": "From the project portfolio · Signboards",
-        "image": "assets/portfolio/project-015.jpg",
-        "kind": "real",
-        "occasion": "corporate",
-        "project": "astria-holdings-halo-lettering"
-      },
-      {
-        "id": "aluminium-studio",
-        "name": "Aluminium Studio",
-        "description": "Brushed metal and simple lettering create a clean creative-studio entrance.",
-        "setting": "Creative studio entrance · Brushed metal & pink",
-        "image": "assets/corporate-themes/aluminium-studio.jpg",
-        "kind": "concept",
-        "occasion": "corporate"
-      },
-      {
-        "id": "real-signboards-cision-reception-signage",
-        "name": "Cision reception signage",
-        "description": "Raised metallic letters mounted across a dark panel at the reception entrance.",
-        "setting": "From the project portfolio · Signboards",
-        "image": "assets/portfolio/project-071.jpg",
-        "kind": "real",
-        "occasion": "corporate",
-        "project": "cision-reception-signage"
-      },
-      {
-        "id": "lightbox-corner",
-        "name": "Lightbox Corner",
-        "description": "A bright lightbox keeps a small retail frontage easy to recognise.",
-        "setting": "Small retail shop · Lime, white & blue",
-        "image": "assets/corporate-themes/lightbox-corner.jpg",
-        "kind": "concept",
-        "occasion": "corporate"
-      },
-      {
-        "id": "front-lit-market",
-        "name": "Front-lit Market",
-        "description": "Clear illuminated lettering helps a storefront stand out after dark.",
-        "setting": "Neighbourhood storefront · Orange, white & green",
-        "image": "assets/corporate-themes/front-lit-market.jpg",
-        "kind": "concept",
-        "occasion": "corporate"
-      }
-    ]
-  },
-  {
     "key": "acrylic-signages",
-    "name": "Acrylic signages",
-    "intro": "Transparent, coloured and illuminated acrylic details for everyday brand visibility.",
+    "name": "Acrylic signs & small displays",
+    "intro": "For welcome signs, reception logos, directions and small product displays made from acrylic.",
     "occasion": "corporate",
     "themes": [
       {
@@ -333,8 +313,8 @@
   },
   {
     "key": "window-displays",
-    "name": "Window displays",
-    "intro": "Storefront stories built with printed graphics and attainable display props.",
+    "name": "Shop windows & retail displays",
+    "intro": "For storefront windows, product shelves, display risers and promotional corners in shops.",
     "occasion": "corporate",
     "themes": [
       {
@@ -416,8 +396,8 @@
   },
   {
     "key": "banners-display-boards",
-    "name": "Banners & display boards",
-    "intro": "Practical campaign formats for promotions, navigation and events.",
+    "name": "Banners, boards & printed signs",
+    "intro": "For promotional banners, freestanding boards, cutout standees and printed directions.",
     "occasion": "corporate",
     "themes": [
       {
@@ -468,16 +448,6 @@
         "occasion": "corporate"
       },
       {
-        "id": "real-banners-display-boards-koo-kee-hoarding-campaign",
-        "name": "Koo Kee hoarding campaign",
-        "description": "A continuous food campaign graphic across a curved mall hoarding.",
-        "setting": "From the project portfolio · Stickers, Hoarding graphics",
-        "image": "assets/portfolio/project-010.jpg",
-        "kind": "real",
-        "occasion": "corporate",
-        "project": "koo-kee-hoarding-campaign"
-      },
-      {
         "id": "hanging-wayfinding",
         "name": "Hanging Wayfinding",
         "description": "Overhead banners guide customers while keeping the retail floor open.",
@@ -499,8 +469,8 @@
   },
   {
     "key": "exhibition-installation",
-    "name": "Exhibition Installation",
-    "intro": "From the design plan to a show-ready space. Explore real Meiji and Winter Time exhibition projects.",
+    "name": "Exhibition setup & dismantling",
+    "intro": "For booth graphics, backdrops, counters and display fixtures. We deliver, install and dismantle the agreed display, rather than organise the exhibition.",
     "occasion": "corporate",
     "themes": [
       {
