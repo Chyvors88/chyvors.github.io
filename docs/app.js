@@ -2,7 +2,7 @@ const content = {
   "personal": {
     "label": "FOR LIFE’S HAPPY LITTLE MILESTONES",
     "title": "Personal moments.\nMade memorable.",
-    "description": "Baby showers, anniversaries, birthdays, engagements and weddings. Bring your theme together with custom backdrops, signage and table decorations.",
+    "description": "Custom backdrops, welcome signage and decorative table details for baby showers, anniversaries, birthdays, engagements and weddings. We design and install the agreed pieces, with teardown arranged in your quote.",
     "categories": [
       {
         "name": "Baby showers",
@@ -71,13 +71,13 @@ const content = {
         "alt": "Pink event table styling with flowers, lime napkins and blue acrylic table number concept"
       }
     ],
-    "cta": "Plan your personal event",
+    "cta": "Enquire about your backdrop",
     "service": "Personal event"
   },
   "corporate": {
     "label": "YOUR BRAND, CENTRE STAGE",
     "title": "Your business.\nBrought to life.",
-    "description": "From event backdrops to everyday brand visibility, explore stickers, signboards, acrylic signages, window displays, banners and exhibition installation made for your business.",
+    "description": "Backdrop and signage design, printing and installation for events, exhibitions and business premises. Explore the options below, with dismantling and collection arranged in your quote where needed.",
     "categories": [
       {
         "name": "Stickers",
@@ -154,7 +154,7 @@ const content = {
         "alt": "Meiji exhibition booth with branded counter, display graphics and installed fixtures"
       }
     ],
-    "cta": "Plan your corporate project",
+    "cta": "Enquire about your signage or display",
     "service": "Corporate event"
   }
 };
@@ -249,7 +249,7 @@ if(serviceSelect) {
     otherOptions.append(otherChoice, otherDetails); otherGroup.append(otherHeading, otherOptions);
     container.append(otherGroup);
     document.querySelector('#service-enquiry-help').textContent =
-      'Explore ' + (key === 'corporate' ? 'corporate' : 'personal') + ' services below and select all that apply.';
+      'Explore ' + (key === 'corporate' ? 'corporate' : 'personal') + ' backdrop, signage and display services below and select all that apply.';
   }
   serviceSelect.addEventListener('change', updateServiceEnquiry);
   updateServiceEnquiry();
