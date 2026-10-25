@@ -55,3 +55,15 @@
 .theme-reel .theme-reel-track{width:calc(300% * var(--theme-count));animation:none!important;transform:none!important;will-change:auto!important}
 .theme-reel-group{width:33.3333333333%}
 .theme-reel img{-webkit-user-drag:none;-webkit-touch-callout:none}
+
+/* Desktop changes photos by opacity only. Touch retains native iOS scrolling. */
+.theme-reel.is-fading{overflow:hidden;cursor:default}
+.theme-reel.is-fading .theme-reel-track{width:100%!important}
+.theme-reel.is-fading .theme-reel-group{position:absolute;inset:0;width:100%}
+.theme-reel.is-fading .theme-reel-group:not(:first-child){display:none}
+.theme-reel.is-fading .theme-reel-tile{position:absolute;inset:0;width:100%;opacity:0;transition:opacity .9s ease;pointer-events:none}
+.theme-reel.is-fading .theme-reel-tile.is-current{opacity:1;z-index:1}
+.theme-preview-hint{position:absolute;bottom:14px;right:12px;padding:5px 9px;border:1px solid #fff9;border-radius:6px;background:#22271fcc;color:white;font-size:10px;font-weight:500;line-height:1.5}
+.theme-preview-controls .theme-motion-toggle{bottom:46px}
+.theme-preview-controls .theme-motion-toggle[hidden]{display:none}
+@media(prefers-reduced-motion:reduce){.theme-reel.is-fading .theme-reel-tile{transition:none}.theme-preview-hint{display:none}}

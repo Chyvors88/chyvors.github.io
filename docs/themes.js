@@ -341,21 +341,21 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
   const collections = window.backdroppedThemes;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const reels = new Set();
-  let lastFrame = 0;
+  const desktopPreview = matchMedia('(min-width: 761px) and (hover: hover) and (pointer: fine)');
   function animatePreviews(now) {
-    const elapsed = Math.min(now - lastFrame, 50); lastFrame = now;
     for (const reel of reels) {
       if (!reel.isConnected) { reels.delete(reel); continue; }
-      if (document.hidden || reduced.matches || !reel.classList.contains('is-moving') || reel.classList.contains('is-offscreen') || reel.classList.contains('is-interacting') || now < reel.resumeAt) continue;
-      reel.scrollLeft -= reel.clientWidth * elapsed / 15000;
-      reel.wrapScroll();
+      if (document.hidden || reduced.matches || !reel.classList.contains('is-fading') || !reel.classList.contains('is-hovered') || reel.classList.contains('is-paused') || reel.classList.contains('is-offscreen')) continue;
+      if (now >= reel.nextFadeAt) {
+        reel.showNextPreview();
+        reel.nextFadeAt = now + 6000;
+      }
     }
     requestAnimationFrame(animatePreviews);
   }
   requestAnimationFrame(animatePreviews);
   function createReel(themes, details = false) {
     const reel = document.createElement('div'); reel.className = 'theme-reel';
-    if (!reduced.matches) reel.classList.add('is-moving');
     // Stop offscreen previews so mobile devices only animate what is visible.
     if ('IntersectionObserver' in window) {
       reel.classList.add('is-offscreen');
@@ -369,7 +369,6 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
     }
     const views = details ? ['full', 'left', 'right'].map(view => ({ ...themes[0], view })) : themes;
     reel.style.setProperty('--theme-count', views.length);
-    reel.style.setProperty('--reel-duration', (views.length * 15) + 's');
     const track = document.createElement('div'); track.className = 'theme-reel-track';
     const nearby = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -398,9 +397,53 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
       track.append(group);
     }
     reel.append(track);
+    const fadeTiles = [...track.firstElementChild.children];
+    let previewIndex = 0;
+    function loadFadeImage(index) {
+      const img = fadeTiles[index]?.querySelector('img');
+      if (img && !img.getAttribute('src')) {
+        img.loading = 'eager';
+        window.setBackdroppedImage(img, img.dataset.previewSource, '(max-width: 760px) 88vw, 30vw');
+      }
+    }
+    function showPreview(index) {
+      previewIndex = (index + views.length) % views.length;
+      loadFadeImage(previewIndex);
+      fadeTiles.forEach((tile, i) => tile.classList.toggle('is-current', i === previewIndex));
+      loadFadeImage((previewIndex + 1) % views.length);
+    }
+    reel.showNextPreview = () => showPreview(previewIndex + 1);
+    reel.nextFadeAt = Infinity;
+    function updatePreviewMode() {
+      const fading = desktopPreview.matches;
+      reel.classList.toggle('is-fading', fading);
+      reel.classList.remove('is-hovered');
+      reel.nextFadeAt = Infinity;
+      showPreview(previewIndex);
+      requestAnimationFrame(() => {
+        reel.scrollLeft = fading ? 0 : track.scrollWidth / 3;
+        reel.loadNearby?.();
+      });
+      reel.updatePreviewControls?.();
+    }
+    desktopPreview.addEventListener('change', updatePreviewMode);
+    reel.addEventListener('pointerenter', event => {
+      if (event.pointerType !== 'mouse' || !desktopPreview.matches) return;
+      reel.classList.add('is-hovered');
+      reel.nextFadeAt = performance.now() + 1200;
+    });
+    reel.addEventListener('pointerleave', () => {
+      reel.classList.remove('is-hovered');
+      reel.nextFadeAt = Infinity;
+    });
     // GPU-driven transforms do not consistently trigger image observers on mobile.
     // Check the current slide and its neighbours as well, including after a drag.
     reel.loadNearby = () => {
+      if (reel.classList.contains('is-fading')) {
+        loadFadeImage(previewIndex);
+        loadFadeImage((previewIndex + 1) % views.length);
+        return;
+      }
       const bounds = reel.getBoundingClientRect(), margin = reel.clientWidth;
       track.querySelectorAll('img:not([src])').forEach(img => {
         const box = img.getBoundingClientRect();
@@ -413,12 +456,13 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
     // Mouse dragging uses the same scroll position, without seeking a CSS animation.
     reel.resumeAt = 0;
     reel.wrapScroll = () => {
+      if (reel.classList.contains('is-fading')) return;
       const span = track.scrollWidth / 3;
       if (!span) return;
       if (reel.scrollLeft < span * .25) reel.scrollLeft += span;
       else if (reel.scrollLeft > span * 1.25) reel.scrollLeft -= span;
     };
-    requestAnimationFrame(() => { reel.scrollLeft = track.scrollWidth / 3; reel.loadNearby(); });
+    updatePreviewMode();
     reels.add(reel);
     let gesture;
     function finish() {
@@ -434,7 +478,7 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
       }
     }
     reel.addEventListener('pointerdown', event => {
-      if (!event.isPrimary || (event.pointerType === 'mouse' && event.button !== 0)) return;
+      if (reel.classList.contains('is-fading') || !event.isPrimary || (event.pointerType === 'mouse' && event.button !== 0)) return;
       reel.classList.add('is-interacting');
       gesture = { id: event.pointerId, type: event.pointerType, x: event.clientX, y: event.clientY,
         start: reel.scrollLeft, dragging: false };
@@ -475,15 +519,23 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
     return reel;
   }
   function createMotionButton(reel) {
-    const button = document.createElement('button'); button.type = 'button'; button.className = 'theme-motion-toggle';
-    const initiallyMoving = reel.classList.contains('is-moving');
-    button.textContent = initiallyMoving ? 'Pause preview' : 'Move preview'; button.setAttribute('aria-pressed', String(initiallyMoving));
-    button.addEventListener('click', () => {
-      const moving = reel.classList.toggle('is-moving'); reel.classList.toggle('is-paused', !moving); button.setAttribute('aria-pressed', String(moving));
-      button.textContent = moving ? 'Pause preview' : 'Move preview';
-    });
     const controls = document.createElement('div'); controls.className = 'theme-preview-controls';
-    controls.append(button); return controls;
+    const hint = document.createElement('span'); hint.className = 'theme-preview-hint';
+    const button = document.createElement('button'); button.type = 'button'; button.className = 'theme-motion-toggle';
+    reel.updatePreviewControls = () => {
+      hint.textContent = desktopPreview.matches ? 'Hover to preview' : 'Swipe to view';
+      const paused = reel.classList.contains('is-paused');
+      button.textContent = paused ? 'Resume fades' : 'Pause fades';
+      button.setAttribute('aria-pressed', String(paused));
+      button.hidden = !desktopPreview.matches || reduced.matches;
+    };
+    button.addEventListener('click', () => {
+      const paused = reel.classList.toggle('is-paused');
+      if (!paused) reel.nextFadeAt = performance.now() + 1200;
+      reel.updatePreviewControls();
+    });
+    reel.updatePreviewControls();
+    controls.append(hint, button); return controls;
   }
   window.backdroppedThemeUI = { createReel, createMotionButton };
   setInterval(() => {
