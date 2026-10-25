@@ -347,7 +347,7 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
     for (const reel of reels) {
       if (!reel.isConnected) { reels.delete(reel); continue; }
       if (document.hidden || reduced.matches || !reel.classList.contains('is-moving') || reel.classList.contains('is-offscreen') || reel.classList.contains('is-interacting') || now < reel.resumeAt) continue;
-      reel.scrollLeft -= reel.clientWidth * elapsed / 5000;
+      reel.scrollLeft -= reel.clientWidth * elapsed / 15000;
       reel.wrapScroll();
     }
     requestAnimationFrame(animatePreviews);
@@ -369,7 +369,7 @@ window.backdroppedThemes.push(...(window.backdroppedCorporateThemes || []));
     }
     const views = details ? ['full', 'left', 'right'].map(view => ({ ...themes[0], view })) : themes;
     reel.style.setProperty('--theme-count', views.length);
-    reel.style.setProperty('--reel-duration', (views.length * 5) + 's');
+    reel.style.setProperty('--reel-duration', (views.length * 15) + 's');
     const track = document.createElement('div'); track.className = 'theme-reel-track';
     const nearby = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
       entries.forEach(entry => {
